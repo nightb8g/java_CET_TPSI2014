@@ -1,7 +1,9 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDateTime;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 
 
@@ -56,7 +58,7 @@ public class Sorteio implements ISorteio {
     /**
      * Cont�m as apostas realizadas para o presente sorteio.
      */
-    private List<Aposta> lances;
+    private ContainerList lances;
     private Chave chaveVencedora;
 
 
@@ -70,7 +72,8 @@ public class Sorteio implements ISorteio {
 
     @Override
     public boolean iniciarCicloApostas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       lances= new ContainerList();
+       return true;
     }
 
     @Override
@@ -89,13 +92,16 @@ public class Sorteio implements ISorteio {
     }
 
     @Override
-    public List<Aposta> getLances() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ContainerList<Aposta> getLances() {
+        ContainerList aux=new ContainerList();
+        while(lances.getIterador().hasNext())
+            aux.insert(lances.getIterador().next());
+       return aux;
     }
 
     @Override
     public void registaAposta(Aposta aposta) {
-        lances.add(aposta);
+        lances.insert(aposta);
     }
 
     @Override
