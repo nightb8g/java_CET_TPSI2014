@@ -50,7 +50,7 @@ public interface IGestorAposta {
      * @param pin
      * @param montante    montante
      */
-    public boolean creditarMontante(int telefone, short pin, float montante);
+    public boolean creditarMontante(int telefone, short pin,String descricao, float montante);
 
     /**
      * Valida o apostador e retira o montante (valor negativo) da conta do apostador.
@@ -59,7 +59,7 @@ public interface IGestorAposta {
      * @param pin
      * @param montante    montante
      */
-    public boolean levantarMontante(int telefone, short pin, float montante);
+    public boolean levantarMontante(int telefone, short pin,String descricao, float montante);
 
     /**
      * Remove o apostador da BD. É assumido que o saldo remanescente � entregue ao

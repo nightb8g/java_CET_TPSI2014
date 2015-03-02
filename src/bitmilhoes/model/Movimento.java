@@ -17,26 +17,35 @@ public class Movimento implements IMovimento {
     private Natureza natureza;
 
     public Movimento(LocalDateTime dataMovimento, String descricao, float valor, Natureza natureza) {
+        this.dataMovimento=dataMovimento;
+        this.descricao=descricao;
+        this.valor=valor;
+        this.natureza=natureza;
     }
-
+    
     @Override
     public LocalDateTime getDataMovimento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataMovimento;
     }
 
     @Override
     public String getDescricao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return descricao;
     }
 
     @Override
     public Natureza getNatureza() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return natureza;
     }
 
     @Override
     public float getValor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return valor;
+    }
+
+    @Override
+    public String toString() {
+        return "Movimento{" + "dataMovimento=" + dataMovimento + ", descricao=" + descricao + ", valor=" + valor + ", natureza=" + natureza + '}';
     }
 
     

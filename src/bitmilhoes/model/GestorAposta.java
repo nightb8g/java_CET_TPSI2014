@@ -36,12 +36,12 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public boolean creditarMontante(int telefone, short pin, float montante) {
+    public boolean creditarMontante(int telefone, short pin,String descricao, float montante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean levantarMontante(int telefone, short pin, float montante) {
+    public boolean levantarMontante(int telefone, short pin,String descricao, float montante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

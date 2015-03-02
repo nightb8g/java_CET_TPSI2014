@@ -13,7 +13,10 @@ public class Premio {
     private float percentagem; // Percentagem atribuida
 
     public Premio(int ordinal,int numero,int estrela,float percentagem) {
-       
+       this.ordinal=ordinal;
+       this.numero=numero;
+       this.estrela=estrela;
+       this.percentagem=percentagem;
     }
 
     

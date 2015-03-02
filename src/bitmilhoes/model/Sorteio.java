@@ -95,22 +95,22 @@ public class Sorteio implements ISorteio {
 
     @Override
     public void registaAposta(Aposta aposta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        lances.add(aposta);
     }
 
     @Override
     public int getNrRegistos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nrRegistos;
     }
 
     @Override
     public Premio getPrimeiroPremio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return primeiroPremio;
     }
 
     @Override
     public boolean isRealizado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return realizado;
     }
         
 
