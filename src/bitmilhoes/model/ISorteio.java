@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public interface ISorteio {
     public LocalDateTime getDataSorteio();
     // Devolve os lances de apostas existentes
 
-    public List<Aposta> getLances();
+    public ContainerList<Aposta> getLances();
     // Regista uma aposta no array de lances
 
     public void registaAposta(Aposta aposta);

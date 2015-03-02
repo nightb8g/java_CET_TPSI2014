@@ -5,25 +5,15 @@
  */
 package bitmilhoes;
 
-import bitmilhoes.containers.ContainerSet;
-import bitmilhoes.model.Aposta;
 import bitmilhoes.model.Apostador;
 import bitmilhoes.model.Chave;
 import bitmilhoes.model.GestorAposta;
 import bitmilhoes.model.IGestorAposta;
 import bitmilhoes.model.Movimento;
 import bitmilhoes.model.Natureza;
-import com.sun.jndi.dns.DnsContextFactory;
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.ButtonType;
 
 import javafx.stage.Stage;
 
