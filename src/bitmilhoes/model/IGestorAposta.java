@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -96,28 +97,28 @@ public interface IGestorAposta {
      * @param numeros
      * @param estrelas    estrelas
      */
-    public void apostaPersonalizada(int telefone, short pin, List<Integer> numeros, List<Integer> estrelas);
+    public void apostaPersonalizada(int telefone, short pin, ContainerList<Integer> numeros, ContainerList<Integer> estrelas);
 
     /**
      * Lista os apostadores por nome (ordem alfabetica)
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public List<Apostador> listarApostadoresNome();
+    public ContainerList<Apostador> listarApostadoresNome();
 
     /**
      * Lista os apostadores por data de nascimento 
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public List<Apostador> listarApostadoresDataNascimento();
+    public ContainerList<Apostador> listarApostadoresDataNascimento();
 
     /**
      * Lista os apostadores pelo seu saldo
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public List<Apostador> listarApostadoresSaldo();
+    public ContainerList<Apostador> listarApostadoresSaldo();
 
     /**
      * Listar os premios atribuidos no ultimo sorteio, juntamente com as chaves
@@ -125,7 +126,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public List<Aposta> listarPremiosUltimoSorteio();
+    public ContainerList<Aposta> listarPremiosUltimoSorteio();
 
     /**
      * Lista os movimentos de um apostador por ordem crescente de data e decrescente
@@ -136,7 +137,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public List<Movimento> listarMovimentosApostador(int telefone, short pin);
+    public ContainerList<Movimento> listarMovimentosApostador(int telefone, short pin);
 
     /**
      * Reinicia o registo de apostas, eliminando todas as apostas registadas dos
@@ -146,7 +147,7 @@ public interface IGestorAposta {
 
     public Chave efectuarSorteio();
 
-    public Chave efectuarSorteio(List<Integer> nums, List<Integer> ests);
+    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests);
 
     public void inicializaNrApostadores();
 }

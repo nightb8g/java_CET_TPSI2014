@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class GestorAposta implements IGestorAposta {
 
     private Sorteio sorteio;
-    private List<Apostador> apostadores;
+    private ContainerList<Apostador> apostadores;
     
     public GestorAposta() {        
 
@@ -56,32 +57,32 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public void apostaPersonalizada(int telefone, short pin, List<Integer> numeros, List<Integer> estrelas) {
+    public void apostaPersonalizada(int telefone, short pin, ContainerList<Integer> numeros, ContainerList<Integer> estrelas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Apostador> listarApostadoresNome() {
+    public ContainerList<Apostador> listarApostadoresNome() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Apostador> listarApostadoresDataNascimento() {
+    public ContainerList<Apostador> listarApostadoresDataNascimento() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Apostador> listarApostadoresSaldo() {
+    public ContainerList<Apostador> listarApostadoresSaldo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Aposta> listarPremiosUltimoSorteio() {
+    public ContainerList<Aposta> listarPremiosUltimoSorteio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Movimento> listarMovimentosApostador(int telefone, short pin) {
+    public ContainerList<Movimento> listarMovimentosApostador(int telefone, short pin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -96,7 +97,7 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public Chave efectuarSorteio(List<Integer> nums, List<Integer> ests) {
+    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -105,7 +106,7 @@ public class GestorAposta implements IGestorAposta {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<Apostador> getApostadores() {
+    public ContainerList<Apostador> getApostadores() {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
     }
 

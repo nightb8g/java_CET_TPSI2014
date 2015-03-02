@@ -7,7 +7,9 @@ package bitmilhoes;
 
 import bitmilhoes.model.Apostador;
 import bitmilhoes.model.Chave;
+import bitmilhoes.model.GestorAposta;
 import bitmilhoes.model.Natureza;
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.application.Platform;
 
@@ -21,11 +23,13 @@ public class AppStart extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-        Apostador p1 = new Apostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30);
-        adicionarAposta(p1);
-        adicionarMovimento(p1);
-        listarApostador(p1);
+        GestorAposta ga=new GestorAposta();
+        ga.novoApostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30);
+        //Apostador p1 = new Apostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30);
+        //ga.getApostadores()
+//        adicionarAposta(p1);
+//        adicionarMovimento(p1);
+//        listarApostador(p1);
         Platform.exit();
     }
     private void listarApostador(Apostador apr){

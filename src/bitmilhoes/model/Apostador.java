@@ -1,9 +1,8 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Conta do apostador cujo saldo pode ser utilizado para pagar o registo de
@@ -45,12 +44,21 @@ public class Apostador implements IApostador {
      */
     private float saldo;
 
-    private List<Movimento> movimentos;
-    private List<Aposta> apostas;
+    private ContainerList<Movimento> movimentos;
+    private ContainerList<Aposta> apostas;
 
     // NOVO
     public Apostador() {
     }
+
+//    public Apostador(int telefone, short pin) {
+//        this.telefone = telefone;
+//        this.pin = pin;
+//    }
+//
+//    public Apostador(int telefone) {
+//        this.telefone = telefone;
+//    }
 
     // ALTERADO
     public Apostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
@@ -60,13 +68,15 @@ public class Apostador implements IApostador {
         this.dataNascimento = dataNascimento;
         this.saldo = saldo;
         this.dataSaldo = LocalDateTime.now();
-        this.apostas = new ArrayList<>();
-        this.movimentos=new ArrayList<>();
+        this.apostas = new ContainerList<>();
+        this.movimentos = new ContainerList<>();
 
     }
-    public void criarMovimento(String descricao, float valor, Natureza natureza){
-        movimentos.add(new Movimento(LocalDateTime.now(), descricao, valor, natureza));
+
+    public void criarMovimento(String descricao, float valor, Natureza natureza) {
+        movimentos.insert(new Movimento(LocalDateTime.now(), descricao, valor, natureza));
     }
+
     @Override
     public boolean creditar(float valor) {
         if (valor > 0) {
@@ -102,19 +112,21 @@ public class Apostador implements IApostador {
     public Aposta criarAposta(Chave chave) {
         //cria a apostas
         Aposta aux = new Aposta(this, chave);
-        apostas.add(aux);
+        apostas.insert(aux);
         //cria o movimento
-        movimentos.add(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", 2, Natureza.DEBITO));
+        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", 2, Natureza.DEBITO));
+        //Adiciona o lance ao sorteio
+
         return aux;
     }
 
     @Override
-    public List<Aposta> getApostas() {
+    public ContainerList<Aposta> getApostas() {
         return apostas;
     }
 
     @Override
-    public List<Movimento> getMovimentos() {
+    public ContainerList<Movimento> getMovimentos() {
         return movimentos;
     }
 
@@ -159,7 +171,7 @@ public class Apostador implements IApostador {
 
     @Override
     public String toString() {
-        return "Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos + ", apostas=" + apostas + '}';
+        return "Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
     }
 
 }
