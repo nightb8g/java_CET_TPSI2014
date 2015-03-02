@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * Intermedeia a interface utilizada pelo utilizador e as classes com
  * responsabilidade pelas operaçoes de gestto dos apostadores, o registo de
  * apostas, sorteio e atribuicao de premios.
+ *
  * @author poo
  * @version 4.0
  * @updated 18-Jan-2015T17:13:36
@@ -15,15 +17,15 @@ import java.util.List;
 public class GestorAposta implements IGestorAposta {
 
     private Sorteio sorteio;
-    private ContainerList<Apostador> apostadores;
-    
-    public GestorAposta() {        
+    private IContainerOperations<Apostador> apostadores;
 
+    public GestorAposta() {
+        apostadores = new ContainerList();
     }
 
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return apostadores.insert(new Apostador(telefone, pin, nome, dataNascimento, saldo));
     }
 
     @Override
@@ -37,12 +39,12 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public boolean creditarMontante(int telefone, short pin,String descricao, float montante) {
+    public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean levantarMontante(int telefone, short pin,String descricao, float montante) {
+    public boolean levantarMontante(int telefone, short pin, String descricao, float montante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -57,32 +59,32 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public void apostaPersonalizada(int telefone, short pin, ContainerList<Integer> numeros, ContainerList<Integer> estrelas) {
+    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ContainerList<Apostador> listarApostadoresNome() {
+    public IContainerOperations<Apostador> listarApostadoresNome() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ContainerList<Apostador> listarApostadoresDataNascimento() {
+    public IContainerOperations<Apostador> listarApostadoresDataNascimento() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ContainerList<Apostador> listarApostadoresSaldo() {
+    public IContainerOperations<Apostador> listarApostadoresSaldo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ContainerList<Aposta> listarPremiosUltimoSorteio() {
+    public IContainerOperations<Aposta> listarPremiosUltimoSorteio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ContainerList<Movimento> listarMovimentosApostador(int telefone, short pin) {
+    public IContainerOperations<Movimento> listarMovimentosApostador(int telefone, short pin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -97,7 +99,7 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests) {
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -106,10 +108,13 @@ public class GestorAposta implements IGestorAposta {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ContainerList<Apostador> getApostadores() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
+    public List<Apostador> getApostadores() {
+        return apostadores.getElements();
     }
-
-    
-  
+    public Apostador getApostador(Apostador apostador){
+        return apostadores.getElement(apostador);
+    }
+    public Apostador getApostador(int telefone, short pin){
+        return apostadores.getElement(new Apostador(telefone, pin));
+    }
 }

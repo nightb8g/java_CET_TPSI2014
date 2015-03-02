@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -97,28 +98,28 @@ public interface IGestorAposta {
      * @param numeros
      * @param estrelas    estrelas
      */
-    public void apostaPersonalizada(int telefone, short pin, ContainerList<Integer> numeros, ContainerList<Integer> estrelas);
+    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas);
 
     /**
      * Lista os apostadores por nome (ordem alfabetica)
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public ContainerList<Apostador> listarApostadoresNome();
+    public IContainerOperations<Apostador> listarApostadoresNome();
 
     /**
      * Lista os apostadores por data de nascimento 
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public ContainerList<Apostador> listarApostadoresDataNascimento();
+    public IContainerOperations<Apostador> listarApostadoresDataNascimento();
 
     /**
      * Lista os apostadores pelo seu saldo
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public ContainerList<Apostador> listarApostadoresSaldo();
+    public IContainerOperations<Apostador> listarApostadoresSaldo();
 
     /**
      * Listar os premios atribuidos no ultimo sorteio, juntamente com as chaves
@@ -126,7 +127,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public ContainerList<Aposta> listarPremiosUltimoSorteio();
+    public IContainerOperations<Aposta> listarPremiosUltimoSorteio();
 
     /**
      * Lista os movimentos de um apostador por ordem crescente de data e decrescente
@@ -137,7 +138,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public ContainerList<Movimento> listarMovimentosApostador(int telefone, short pin);
+    public IContainerOperations<Movimento> listarMovimentosApostador(int telefone, short pin);
 
     /**
      * Reinicia o registo de apostas, eliminando todas as apostas registadas dos
@@ -147,7 +148,7 @@ public interface IGestorAposta {
 
     public Chave efectuarSorteio();
 
-    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests);
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests);
 
     public void inicializaNrApostadores();
 }

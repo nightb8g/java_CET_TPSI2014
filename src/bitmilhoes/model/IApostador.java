@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,12 +40,12 @@ public interface IApostador {
     /**
      * Devolve as apostas efectuadas pelo apostador.
      */
-    public ContainerList<Aposta> getApostas();
+    public IContainerOperations<Aposta> getApostas();
 
     /**
      * Devolve os movimentos efectuados na conta do apostador.
      */
-    public ContainerList<Movimento> getMovimentos();
+    public IContainerOperations<Movimento> getMovimentos();
 
     public LocalDateTime getDataSaldo();
 

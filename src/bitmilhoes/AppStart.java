@@ -25,8 +25,10 @@ public class AppStart extends Application {
     public void start(Stage primaryStage) {
         GestorAposta ga=new GestorAposta();
         ga.novoApostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30);
-        //Apostador p1 = new Apostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30);
-        //ga.getApostadores()
+        //Apostador p1 = new Apostador(212,  (short)1234, "OP1", java.time.LocalDate.now(), 30
+//       ga.getApostador(212, (short) 1234).getNome();
+        
+        System.out.println(ga.getApostador(212, (short) 1234));
 //        adicionarAposta(p1);
 //        adicionarMovimento(p1);
 //        listarApostador(p1);

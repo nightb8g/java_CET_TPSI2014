@@ -1,8 +1,11 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Conta do apostador cujo saldo pode ser utilizado para pagar o registo de
@@ -44,21 +47,21 @@ public class Apostador implements IApostador {
      */
     private float saldo;
 
-    private ContainerList<Movimento> movimentos;
-    private ContainerList<Aposta> apostas;
+    private IContainerOperations<Movimento> movimentos;
+    private IContainerOperations<Aposta> apostas;
 
     // NOVO
     public Apostador() {
     }
 
-//    public Apostador(int telefone, short pin) {
-//        this.telefone = telefone;
-//        this.pin = pin;
-//    }
-//
-//    public Apostador(int telefone) {
-//        this.telefone = telefone;
-//    }
+    public Apostador(int telefone, short pin) {
+        this.telefone = telefone;
+        this.pin = pin;
+    }
+
+    public Apostador(int telefone) {
+        this.telefone = telefone;
+    }
 
     // ALTERADO
     public Apostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
@@ -107,7 +110,6 @@ public class Apostador implements IApostador {
             return false;
         }
     }
-
     @Override
     public Aposta criarAposta(Chave chave) {
         //cria a apostas
@@ -121,12 +123,12 @@ public class Apostador implements IApostador {
     }
 
     @Override
-    public ContainerList<Aposta> getApostas() {
+    public IContainerOperations<Aposta> getApostas() {
         return apostas;
     }
 
     @Override
-    public ContainerList<Movimento> getMovimentos() {
+    public IContainerOperations<Movimento> getMovimentos() {
         return movimentos;
     }
 
