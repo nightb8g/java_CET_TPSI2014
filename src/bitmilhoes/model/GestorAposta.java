@@ -1,6 +1,8 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,24 +16,57 @@ import java.util.List;
 public class GestorAposta implements IGestorAposta {
 
     private Sorteio sorteio;
-    private List<Apostador> apostadores;
+    private List<Apostador> apostadores;//ArrayList
     
     public GestorAposta() {        
-
+        
     }
-
+    
+    public List<Apostador> getApostador(int telefone, short pin){
+        //recebe telefone + pin
+//        apostadores.indexOf(pin);//verifica index do pin
+//        apostadores.indexOf(telefone);//verifica o index do telefone
+        
+        if(apostadores.indexOf(telefone)==apostadores.indexOf(pin)){
+            //devolve apostador
+            
+            apostadores.get(indexOfApostador(telefone));
+        }
+            List<Apostador> aux = new ArrayList<>();
+        return aux;
+    }
+    
+    public int indexOfApostador(int number){//recebe o index do apostador com o integer X
+        return apostadores.indexOf(number);
+    }
+    
+      public ContainerList<Apostador> getApostador(int telefone){
+        //devolve apostador
+        //recebe telefone
+          ContainerList<Apostador> aux = new ContainerList<>();
+          return aux;
+    }
+    
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //.existe apostador(telefone)
+        //.não existe INSERE=TRUE
+        //.existe ERRO=FALSE
+        //"reconhece como novo apostador ou não"
+        return false;
     }
 
     @Override
     public boolean alterarPin(int telefone, short pinActual, short pinNovo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //verificar se o utilizador existe (telefone)
+        //se existir ALTERAR pin
+        //permite a INSERIR pin
+        return false;
     }
 
     @Override
     public boolean validaApostador(int telefone, short pinActual) {
+        //verificar se o utilizador existe (telefone)
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -106,6 +141,7 @@ public class GestorAposta implements IGestorAposta {
     }
 
     public List<Apostador> getApostadores() {
+        //nova lista de todos os apostadores
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
     }
 

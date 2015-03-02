@@ -9,6 +9,8 @@ import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.model.Aposta;
 import bitmilhoes.model.Apostador;
 import bitmilhoes.model.Chave;
+import bitmilhoes.model.GestorAposta;
+import bitmilhoes.model.IGestorAposta;
 import bitmilhoes.model.Movimento;
 import bitmilhoes.model.Natureza;
 import com.sun.jndi.dns.DnsContextFactory;
@@ -20,8 +22,8 @@ import java.util.Collection;
 import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.ButtonType;
 
 import javafx.stage.Stage;
 
@@ -48,7 +50,11 @@ public class AppStart extends Application {
         Apostador p1 = new Apostador(212, (short) 1234, "OP1", java.time.LocalDate.now(), 30);
         adicionarAposta(p1);
         adicionarMovimento(p1);
-        listarApostador(p1);
+        //listarApostador(p1);
+        System.out.println("*NEW*");
+        IGestorAposta ga = new GestorAposta();
+
+        
         Platform.exit();
     }
     private void listarApostador(Apostador apr){
