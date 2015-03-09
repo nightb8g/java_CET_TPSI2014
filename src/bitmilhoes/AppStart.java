@@ -12,6 +12,8 @@ import bitmilhoes.model.IGestorAposta;
 import bitmilhoes.model.Movimento;
 import bitmilhoes.model.Natureza;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
 
@@ -43,6 +45,11 @@ public class AppStart extends Application {
         //listarApostador(p1);
         System.out.println("*NEW*");
         IGestorAposta ga = new GestorAposta();
+        
+        System.out.println("+++TESTE+++");
+        //verifica se existe o apostador x com o pin x e o telefone x
+        System.out.println(ga.alterarPin(212, (short)1234, (short)4321));//funciona!
+
 
         
         Platform.exit();

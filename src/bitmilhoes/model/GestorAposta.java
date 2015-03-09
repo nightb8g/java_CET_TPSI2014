@@ -1,9 +1,8 @@
 package bitmilhoes.model;
 
-import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,56 +20,45 @@ public class GestorAposta implements IGestorAposta {
     private IContainerOperations<Apostador> apostadores;
 
     public GestorAposta() {
-        apostadores = new ContainerList();
+        apostadores = new ContainerSet();
     }
     
-    public List<Apostador> getApostador(int telefone, short pin){
-        //recebe telefone + pin
-//        apostadores.indexOf(pin);//verifica index do pin
-//        apostadores.indexOf(telefone);//verifica o index do telefone
-        
-        if(apostadores.indexOf(telefone)==apostadores.indexOf(pin)){
-            //devolve apostador
-            
-            apostadores.get(indexOfApostador(telefone));
-        }
-            List<Apostador> aux = new ArrayList<>();
-        return aux;
-    }
-    
-    public int indexOfApostador(int number){//recebe o index do apostador com o integer X
-        return apostadores.indexOf(number);
-    }
-    
-      public ContainerList<Apostador> getApostador(int telefone){
-        //devolve apostador
-        //recebe telefone
-          ContainerList<Apostador> aux = new ContainerList<>();
-          return aux;
-    }
+//    public List<Apostador> getApostador(int telefone, short pin){//recebe a pessoa
+//        //recebe telefone + pin
+////        apostadores.indexOf(pin);//verifica index do pin
+////        apostadores.indexOf(telefone);//verifica o index do telefone
+//        //int telefone, short pin
+//        //apostadores.getElement(apostador);//.getElement(apostador);
+//        //getElements() -> apostador é inferior ao tamanho
+//        List<Apostador> aux = new ArrayList<>();
+//        aux.add(apostadores.getElement());
+//        return aux;
+//    }
     
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
-        return apostadores.insert(new Apostador(telefone, pin, nome, dataNascimento, saldo));
+        return apostadores.insert(new Apostador(telefone, pin, nome, dataNascimento, saldo));//funciona
     }
 
     @Override
-    public boolean alterarPin(int telefone, short pinActual, short pinNovo) {
-        //verificar se o utilizador existe (telefone)
-        //se existir ALTERAR pin
-        //permite a INSERIR pin
-        return false;
+    public boolean alterarPin(int telefone, short pinActual, short pinNovo) {//Aqui
+        // como é set não deixa inserir apostadores repetidos
+        return apostadores.insert(new Apostador(telefone,(short) pinActual));//funciona
     }
 
     @Override
-    public boolean validaApostador(int telefone, short pinActual) {
+    public boolean validaApostador(int telefone, short pinActual) {//Aqui
         //verificar se o utilizador existe (telefone)
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return apostadores.insert(new Apostador(telefone, (short) pinActual));//funciona
     }
 
     @Override
     public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //descrição?
+        //não existe este apostador
+        (!validaApostador(telefone, (short)pin)? return false :
+                                                 apostadores.;
+        return false;
     }
 
     @Override
