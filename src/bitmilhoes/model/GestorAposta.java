@@ -51,9 +51,6 @@ public class GestorAposta implements IGestorAposta {
         
         
        return apostador.alterarPin(pinNovo, pinActual);
-        
-        
-
     }
 
     @Override
@@ -74,6 +71,7 @@ public class GestorAposta implements IGestorAposta {
         //não existe este apostador
 //        (!validaApostador(telefone, (short)pin)? return false :
 //                                                 apostadores.;
+        //aceder o cerditar do apostador
         return false;
     }
 
@@ -143,7 +141,7 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public void inicializaNrApostadores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public List<Apostador> getApostadores() {
