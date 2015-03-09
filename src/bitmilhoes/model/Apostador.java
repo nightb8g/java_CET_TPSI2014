@@ -51,9 +51,17 @@ public class Apostador implements IApostador {
     private IContainerOperations<Aposta> apostas;
 
     // NOVO
-    public Apostador() {
+    public Apostador(Apostador apostador) {
+        this.apostas=apostador.apostas;
+        this.dataNascimento=apostador.dataNascimento;
+        this.dataSaldo=apostador.dataSaldo;
+        this.movimentos=apostador.movimentos;
+        this.nome=apostador.nome;
+        this.pin=apostador.pin;
+        this.saldo=apostador.saldo;
+        this.telefone=apostador.telefone;
     }
-
+    
     public Apostador(int telefone, short pin) {
         this.telefone = telefone;
         this.pin = pin;

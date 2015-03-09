@@ -22,7 +22,8 @@ public class GestorAposta implements IGestorAposta {
     private IContainerOperations<Apostador> apostadores;
 
     public GestorAposta() {
-        apostadores = new ContainerList();
+        apostadores = new ContainerList<>();
+        this.sorteio=new Sorteio();
     }
     
     
@@ -62,6 +63,7 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public void apostaAleatoria(int telefone, short pin) {
+        
             getApostador(telefone, pin).criarAposta(new Chave());
     }
 
@@ -118,11 +120,16 @@ public class GestorAposta implements IGestorAposta {
     public List<Apostador> getApostadores() {
         return apostadores.getElements();
     }
-    
+
     public Apostador getApostador(Apostador apostador){
         return apostadores.getElement(apostador);
     }
     public Apostador getApostador(int telefone, short pin){
         return apostadores.getElement(new Apostador(telefone, pin));
+    }
+
+    @Override
+    public String toString() {
+        return "GestorAposta{" + "sorteio=" + sorteio + ", apostadores=" + apostadores + '}';
     }
 }

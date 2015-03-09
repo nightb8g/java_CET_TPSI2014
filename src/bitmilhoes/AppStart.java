@@ -25,10 +25,11 @@ public class AppStart extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        IGestorAposta ga = new GestorAposta();
+        GestorAposta ga = new GestorAposta();
         ga.novoApostador(212, (short) 1234, "OP", java.time.LocalDate.now(), 30);
-        ga.apostaAleatoria(212, (short) 1234);
-        ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10);
+        System.out.println(ga.getApostador(212, (short)1234));
+       // ga.apostaAleatoria(212, (short) 1234);
+        //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10);
 
         Platform.exit();
     }
