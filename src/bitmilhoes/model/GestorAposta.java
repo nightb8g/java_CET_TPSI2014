@@ -20,9 +20,7 @@ public class GestorAposta implements IGestorAposta {
 
     private Sorteio sorteio;
     private IContainerOperations<Apostador> apostadores;
-
     public GestorAposta() {
-        apostadores = new ContainerList<>();
         this.sorteio=new Sorteio();
     }
     
@@ -63,12 +61,11 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public void apostaAleatoria(int telefone, short pin) {
-        
             getApostador(telefone, pin).criarAposta(new Chave());
     }
 
     @Override
-    public void apostaPersonalizada(int telefone, short pin, ContainerSet<Integer> numeros, ContainerSet<Integer> estrelas) {
+    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas) {
         getApostador(telefone, pin).criarAposta(new Chave(numeros, estrelas));
     }
 
@@ -108,7 +105,7 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

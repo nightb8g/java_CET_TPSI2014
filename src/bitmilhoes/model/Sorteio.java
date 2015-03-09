@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class Sorteio implements ISorteio {
     }
 
     @Override
-    public Chave efectuarSorteio(List<Integer> nums, List<Integer> ests) {
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerSet;
+import bitmilhoes.containers.IContainerOperations;
 import java.util.Random;
 
 
@@ -12,9 +13,8 @@ import java.util.Random;
  * @created 11-Nov-2010 01:11:27
  */
 public class Chave {
-        //Alterado de List para ContainerSet - Verificar com o Prof se é aceitavel fazer isto
-    private ContainerSet numeros;
-    private ContainerSet estrelas;
+    private IContainerOperations numeros;
+    private IContainerOperations estrelas;
 
     public Chave(){
         //Falta Gerar chave aleatoria
@@ -23,7 +23,7 @@ public class Chave {
         doGerar(numeros, 50, 5);
         doGerar(estrelas, 11, 2);
     }
-  public static void doGerar(ContainerSet nmros, int maxiterar, int nelem) {
+  public static void doGerar(IContainerOperations nmros, int maxiterar, int nelem) {
         Random rand = new java.util.Random();
         int nm;
         do {
@@ -32,7 +32,7 @@ public class Chave {
         } while (nmros.size() != nelem);
     }
 
-    public Chave(ContainerSet numeros, ContainerSet estrelas) { 
+    public Chave(IContainerOperations numeros, IContainerOperations estrelas) { 
         
         this.estrelas=estrelas;
         this.numeros=numeros;
