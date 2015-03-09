@@ -184,4 +184,26 @@ public class Apostador implements IApostador {
         return "Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.telefone;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Apostador other = (Apostador) obj;
+        if (this.telefone != other.telefone) {
+            return false;
+        }
+        return true;
+    }
+
 }

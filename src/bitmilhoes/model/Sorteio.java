@@ -3,7 +3,6 @@ package bitmilhoes.model;
 import bitmilhoes.containers.ContainerList;
 import java.time.LocalDateTime;
 import java.util.List;
-import javafx.collections.ObservableList;
 
 
 
