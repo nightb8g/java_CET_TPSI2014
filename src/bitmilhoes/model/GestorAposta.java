@@ -42,22 +42,38 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public boolean alterarPin(int telefone, short pinActual, short pinNovo) {//Aqui
-        // como é set não deixa inserir apostadores repetidos
-        return apostadores.insert(new Apostador(telefone,(short) pinActual));//funciona
+        if (!validaApostador(telefone, pinActual))
+            return false;
+        
+        Apostador apostador = apostadores.getElement(new Apostador(telefone));
+        if (apostador == null)
+            return false;
+        
+        
+       return apostador.alterarPin(pinNovo, pinActual);
+        
+        
+
     }
 
     @Override
     public boolean validaApostador(int telefone, short pinActual) {//Aqui
         //verificar se o utilizador existe (telefone)
-        return apostadores.insert(new Apostador(telefone, (short) pinActual));//funciona
+        
+        Apostador apostador = apostadores.getElement(new Apostador(telefone));
+        if (apostador==null)
+            return false;
+        
+        return (apostador.getPin() == pinActual);
+    
     }
 
     @Override
     public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {
         //descrição?
         //não existe este apostador
-        (!validaApostador(telefone, (short)pin)? return false :
-                                                 apostadores.;
+//        (!validaApostador(telefone, (short)pin)? return false :
+//                                                 apostadores.;
         return false;
     }
 
@@ -68,7 +84,11 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public Apostador removerApostador(int telefone, short pin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Apostador apostador = null;
+        if (!validaApostador(telefone, pin))
+            return apostador;
+        
+        return apostadores.remove(apostador);
     }
 
     @Override
