@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
@@ -23,17 +24,6 @@ public class GestorAposta implements IGestorAposta {
         apostadores = new ContainerSet();
     }
     
-//    public List<Apostador> getApostador(int telefone, short pin){//recebe a pessoa
-//        //recebe telefone + pin
-////        apostadores.indexOf(pin);//verifica index do pin
-////        apostadores.indexOf(telefone);//verifica o index do telefone
-//        //int telefone, short pin
-//        //apostadores.getElement(apostador);//.getElement(apostador);
-//        //getElements() -> apostador é inferior ao tamanho
-//        List<Apostador> aux = new ArrayList<>();
-//        aux.add(apostadores.getElement());
-//        return aux;
-//    }
     
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
@@ -91,12 +81,12 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public void apostaAleatoria(int telefone, short pin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            getApostador(telefone, pin).criarAposta(new Chave());
     }
 
     @Override
-    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void apostaPersonalizada(int telefone, short pin, ContainerSet<Integer> numeros, ContainerSet<Integer> estrelas) {
+        getApostador(telefone, pin).criarAposta(new Chave(numeros, estrelas));
     }
 
     @Override
@@ -135,7 +125,7 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
+    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -147,6 +137,7 @@ public class GestorAposta implements IGestorAposta {
     public List<Apostador> getApostadores() {
         return apostadores.getElements();
     }
+    
     public Apostador getApostador(Apostador apostador){
         return apostadores.getElement(apostador);
     }
