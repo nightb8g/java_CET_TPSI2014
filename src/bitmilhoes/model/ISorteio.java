@@ -20,12 +20,13 @@ public interface ISorteio {
     /**
      *
      * @param chave    chave
+     * @return 
      */
     public boolean validarChave(Chave chave);
     // Recebendo os números e estrelas correspondentes à chave
     // efectua o calculo e atribuição de prémios pelas apostas
 
-    public Chave efectuarSorteio(List<Integer> nums, List<Integer> ests);
+    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests);//alterei List para ContainerList, num e ests
     // Devolve a data de sorteio
 
     public LocalDateTime getDataSorteio();

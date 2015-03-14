@@ -2,6 +2,7 @@ package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
 import java.time.LocalDateTime;
+import static java.time.LocalDateTime.now;
 import java.util.List;
 import javafx.collections.ObservableList;
 
@@ -45,7 +46,7 @@ public class Sorteio implements ISorteio {
     /**
      * Numero de registos de apostas ate ao momento.
      */
-    private int nrRegistos;
+    private static int nrRegistos;// passei a static pois vai ser a variavel contador e como não conta  o sorteio, então não é inicializada
     /**
      * Indica se o sorteio foi ou n�o realizado.
      */
@@ -62,33 +63,45 @@ public class Sorteio implements ISorteio {
     private Chave chaveVencedora;
 
 
-    public Sorteio(){
-        inicializaSorteio();
+    public Sorteio(){//Preenchi este
+        lances = new ContainerList();//inicializa uma lista de lances
+        dataSorteio = java.time.LocalDateTime.now();//capta a data quando chama o construtor para a dataSorteio
     }
 
     public void inicializaSorteio(){                
-        
+        //verifica a chave premio
+        //verifica lances
+        //compara premio e lances
+        //atribui premios?
     }
 
     @Override
-    public boolean iniciarCicloApostas() {
-       lances= new ContainerList();
+    public boolean iniciarCicloApostas() {//o construtor Sorteio inicializa os atributos... porque não o chamar?
+       lances = new ContainerList();
        return true;
     }
 
     @Override
     public boolean validarChave(Chave chave) {
+        
+        //recebe chave
+        //faço uma cópia da lista de chaves
+        //Premio[] PREMIOS = {new Premio(1, 5, 2, 0.5000f),..
+        //verifca os pémios
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Chave efectuarSorteio(List<Integer> nums, List<Integer> ests) {
+    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests) {
+        //para efetuar sorteio necessito da chave prémio gerada
+        //não é assim
+        //return Chave.doGerar(null, nrRegistos, nrRegistos);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public LocalDateTime getDataSorteio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataSorteio;
     }
 
     @Override
@@ -100,7 +113,9 @@ public class Sorteio implements ISorteio {
     }
 
     @Override
-    public void registaAposta(Aposta aposta) {
+    public void registaAposta(Aposta aposta) {//adicionei: nrRegistos++
+        //quando registo uma aposta tenho de adicionar +1 ao número de registos
+        nrRegistos++;// como é [static] não necessito de set, pois só necessito de alterar na class
         lances.insert(aposta);
     }
 

@@ -132,7 +132,7 @@ public class GestorAposta implements IGestorAposta {
         
 //        apostadores.getElements().contains(this)
         
-        return 
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -147,6 +147,16 @@ public class GestorAposta implements IGestorAposta {
         //sorteio.
         //return Sorteio.efectuarSorteio(List<Integer> nums, List<Integer> ests);
 //        return Chave.doGerar(nums, maxiterar, nelem);
+        
+        //verificar se o sorteio foi realizado
+//        if(!sorteio.isRealizado()){//true? Então foi realizado
+//            //se realizado
+//            sorteio.efectuarSorteio(nums, ests);
+//        }
+        
+        //atribui chave?
+//        return 
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -154,7 +164,8 @@ public class GestorAposta implements IGestorAposta {
         //total de apostadores
         //iterador para aqui e remove enquanto há next
         
-        return apostadores.remove();
+        //apostadores.remove();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<Apostador> getApostadores() {
