@@ -124,7 +124,7 @@ public class Apostador implements IApostador {
         Aposta aux = new Aposta(this, chave);
         apostas.insert(aux);
         //cria o movimento
-        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", 2, Natureza.DEBITO));
+        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO));
         //Adiciona o lance ao sorteio
 
         return aux;

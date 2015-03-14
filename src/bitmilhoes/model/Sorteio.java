@@ -4,6 +4,7 @@ import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
 import java.util.List;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 
 
@@ -78,17 +79,18 @@ public class Sorteio implements ISorteio {
 
     @Override
     public boolean validarChave(Chave chave) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.chaveVencedora==chave;
     }
 
     @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.chaveVencedora=new Chave(nums, ests);
+        return this.chaveVencedora;
     }
 
     @Override
     public LocalDateTime getDataSorteio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.dataSorteio;
     }
 
     @Override

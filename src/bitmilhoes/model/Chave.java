@@ -28,7 +28,6 @@ public class Chave {
         int nm;
         do {
             nmros.insert(rand.nextInt(maxiterar)+1);
-            //nmros.insert(rand.nextInt(maxiterar)+1); 
         } while (nmros.size() != nelem);
     }
 
