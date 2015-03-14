@@ -168,6 +168,8 @@ public class Apostador implements IApostador {
     public int getTelefone() {
         return telefone;
     }
+    
+    
 
     @Override
     public String toString() {

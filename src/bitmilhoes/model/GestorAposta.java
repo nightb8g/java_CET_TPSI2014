@@ -56,18 +56,26 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {
-        //descrição?
-        //não existe este apostador
-//        (!validaApostador(telefone, (short)pin)? return false :
-//                                                 apostadores.;
+    public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
         //aceder o cerditar do apostador
+        if(validaApostador(telefone, pin)){
+            descricao = "Creditar";//descreve o motivo
+            //aceder ao apostador e getCreditar(montante)
+            Apostador apostador = apostadores.getElement(new Apostador(telefone, (short) pin));//cria um novo apostador
+            return apostador.creditar(montante);//depende da verificação do método creditar();
+        }
         return false;
     }
 
-    @Override
-    public boolean levantarMontante(int telefone, short pin, String descricao, float montante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override //descricao -> motivo de levantamento
+    public boolean levantarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
+        if(validaApostador(telefone, pin)){//existe
+            descricao = "Levantamento";
+            Apostador apostador = apostadores.getElement(new Apostador(telefone, (short)pin));
+            return apostador.debitar(montante);//depende da verificação do método debitar()
+        }
+        
+        return false;
     }
 
     @Override
@@ -116,22 +124,37 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public boolean iniciarCicloApostas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return iniciarCicloApostas();
     }
 
     @Override
-    public Chave efectuarSorteio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void inicializaNrApostadores() {
+    public Chave efectuarSorteio() {//chave aleatória
         
+//        apostadores.getElements().contains(this)
+        
+        return 
+    }
+
+    @Override
+    //public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
+    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
+        
+//        if(nums !=null && ests != null){
+//        apostadores.getElements().contains(nums);//tem os numeros
+//        apostadores.getElements().contains(ests);//tem as estrelas
+//        } //este é no da sorteio
+        //List<Sorteio> sorteio = new Sorteio();
+        //sorteio.
+        //return Sorteio.efectuarSorteio(List<Integer> nums, List<Integer> ests);
+//        return Chave.doGerar(nums, maxiterar, nelem);
+    }
+
+    @Override
+    public void inicializaNrApostadores() {//'apaga' os apostadores
+        //total de apostadores
+        //iterador para aqui e remove enquanto há next
+        
+        return apostadores.remove();
     }
 
     public List<Apostador> getApostadores() {
