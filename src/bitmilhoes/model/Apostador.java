@@ -111,12 +111,12 @@ public class Apostador implements IApostador {
 
     @Override
     public boolean alterarPin(short pinNovo, short pinActual) {
-        if ((pin >= 0000 && pin <= 9999) && (Short.compare(pinActual, this.pin) == 0)) {
-            this.pin = pinNovo;
-            return true;
-        } else {
-            return false;
-        }
+       if (this.pin != pinActual)
+           return false;
+        
+       this.pin = pinNovo; 
+       return true;
+        
     }
     @Override
     public Aposta criarAposta(Chave chave) {
@@ -152,11 +152,9 @@ public class Apostador implements IApostador {
 
     @Override
     public int getNrApostas() {
-        if (!this.apostas.isEmpty()) {
-            return this.apostas.size();
-        } else {
-            return 0;
-        }
+                 
+       return this.apostas.size();
+      
     }
 
     @Override
