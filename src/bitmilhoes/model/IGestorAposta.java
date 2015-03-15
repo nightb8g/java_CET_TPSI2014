@@ -99,7 +99,7 @@ public interface IGestorAposta {
      * @param numeros
      * @param estrelas    estrelas
      */
-    public void apostaPersonalizada(int telefone, short pin, ContainerSet<Integer> numeros, ContainerSet<Integer> estrelas);
+    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas);
 
     /**
      * Lista os apostadores por nome (ordem alfabetica)
@@ -149,7 +149,7 @@ public interface IGestorAposta {
 
     public Chave efectuarSorteio();
 
-    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests);
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests);
 
     public void inicializaNrApostadores();
 }

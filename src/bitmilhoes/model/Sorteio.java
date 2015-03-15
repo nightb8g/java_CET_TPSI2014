@@ -1,6 +1,7 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
 
 
@@ -95,13 +96,13 @@ public class Sorteio implements ISorteio {
     }
 
     @Override
-    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests) {
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         Chave chaveAux = null;
         if(lances.getElements().contains(nums) && lances.getElements().contains(ests)){//chave prémio
         }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public LocalDateTime getDataSorteio() {
         return dataSorteio;
@@ -156,8 +157,5 @@ public class Sorteio implements ISorteio {
         sb.append("/n");
 
         return sb.toString();//"Sorteio{" + "dataSorteio=" + dataSorteio + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances + ", chaveVencedora=" + chaveVencedora + '}';
-    }
-        
-
-
+    }      
 }

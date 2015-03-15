@@ -27,16 +27,13 @@ public class Aposta implements IAposta {
     private Premio premioAtribuido;
     private Chave chaveAposta; // Chave com a Aposta
 
-    public Aposta() {
-    }
-    public Aposta(Chave chave){
-    }
+
     public Aposta(Apostador apostador, Chave chave) {
         this.apostador = apostador;
         this.chaveAposta = chave;
         this.dataRegisto = java.time.LocalDateTime.now();
     }
-
+    
     @Override
     public Premio getPremio() {
         return this.premioAtribuido;

@@ -1,8 +1,8 @@
 package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author ipoo
@@ -27,7 +27,8 @@ public interface ISorteio {
     // Recebendo os números e estrelas correspondentes à chave
     // efectua o calculo e atribuição de prémios pelas apostas
 
-    public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests);//alterei List para ContainerList, num e ests
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests);
+
     // Devolve a data de sorteio
 
     public LocalDateTime getDataSorteio();

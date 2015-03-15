@@ -97,8 +97,8 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public void apostaPersonalizada(int telefone, short pin, ContainerSet<Integer> numeros, ContainerSet<Integer> estrelas) {
-        getApostador(telefone, pin).criarAposta(new Chave(numeros, estrelas));
+    public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -141,14 +141,11 @@ public class GestorAposta implements IGestorAposta {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    //public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
-    public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
-       
+        @Override
+    public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         //sorteio.efectuarSorteio(nums, ests);
         //Sorteio sorte = new Sorteio();
         //sorteio.efectuarSorteio(nums, ests);
-        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

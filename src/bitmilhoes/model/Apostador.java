@@ -51,9 +51,17 @@ public class Apostador implements IApostador {
     private IContainerOperations<Aposta> apostas;
 
     // NOVO
-    public Apostador() {
+    public Apostador(Apostador apostador) {
+        this.apostas=apostador.apostas;
+        this.dataNascimento=apostador.dataNascimento;
+        this.dataSaldo=apostador.dataSaldo;
+        this.movimentos=apostador.movimentos;
+        this.nome=apostador.nome;
+        this.pin=apostador.pin;
+        this.saldo=apostador.saldo;
+        this.telefone=apostador.telefone;
     }
-
+    
     public Apostador(int telefone, short pin) {
         this.telefone = telefone;
         this.pin = pin;
@@ -116,7 +124,7 @@ public class Apostador implements IApostador {
         Aposta aux = new Aposta(this, chave);
         apostas.insert(aux);
         //cria o movimento
-        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", 2, Natureza.DEBITO));
+        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO));
         //Adiciona o lance ao sorteio
 
         return aux;
@@ -204,6 +212,28 @@ public class Apostador implements IApostador {
         sb.append("/n");
         
         return sb.toString();//"Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.telefone;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Apostador other = (Apostador) obj;
+        if (this.telefone != other.telefone) {
+            return false;
+        }
+        return true;
     }
 
 }
