@@ -133,7 +133,8 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public Chave efectuarSorteio() {//chave aleatória
+    public Chave efectuarSorteio() {
+        //chave aleatória
 //        apostadores.getElements().contains(this)
         
         

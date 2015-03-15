@@ -62,27 +62,29 @@ public class Sorteio implements ISorteio {
     //este é o construts, logo inicializa os atributos
     public Sorteio(){//Preenchi este
         lances = new ContainerList();//inicializa uma lista de lances
-        dataSorteio = java.time.LocalDateTime.now();//capta a data quando chama o construtor para a dataSorteio
+        dataSorteio = java.time.LocalDateTime.now();//capta a data atual quando chama o construtor
         realizado = false;//o sorteio é criado, mas ainda não inicializado
-        chaveVencedora = new Chave();//gera uma chave aleatória
+        chaveVencedora = new Chave();//gera a chave aleatória, combinação para ganhar 1º prémio
     }
 
     public void inicializaSorteio(){
-        //não há perigo do atributo realizado ser nulo
         //verifica se foi realizado o sorteio
         if(realizado != true){//não foi realizado
             //iniciar sorteio
-            //efectuarSorteio(lances, lances);//por verificar, não acabado
-            //colocar realizado true
             realizado = true;
         }
     }
 
     @Override
     public boolean iniciarCicloApostas() {
-       //lances = new ContainerList(); <- este é inicializado no construtor
-        //verificar sorteio realizado, se true permite inicializar, se não não permite
-       return (isRealizado());
+       
+        if(isRealizado()){
+            //lances.getElements().clear();
+            lances = new ContainerList();
+            return true;
+        }
+        
+        return false;
     }
 
     @Override
@@ -94,7 +96,9 @@ public class Sorteio implements ISorteio {
 
     @Override
     public Chave efectuarSorteio(ContainerList<Integer> nums, ContainerList<Integer> ests) {
-        
+        Chave chaveAux = null;
+        if(lances.getElements().contains(nums) && lances.getElements().contains(ests)){//chave prémio
+        }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

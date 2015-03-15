@@ -23,7 +23,7 @@ public class AppStart extends Application {
         IGestorAposta ga = new GestorAposta();
         ga.novoApostador(212, (short) 1234, "OP", java.time.LocalDate.now(), 30);
         ga.apostaAleatoria(212, (short) 1234);
-        ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
+        //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
         
         ga.efectuarSorteio();
         
