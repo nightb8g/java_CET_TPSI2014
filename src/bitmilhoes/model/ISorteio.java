@@ -14,6 +14,7 @@ public interface ISorteio {
     /**
      * Reinicia o registo de apostas. S� pode sortir efeito se tiver ocorrido um
      * sorteio.
+     * @return 
      */
     public boolean iniciarCicloApostas();
 

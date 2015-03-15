@@ -25,7 +25,7 @@ public class Chave {
     }
   public static void doGerar(ContainerSet nmros, int maxiterar, int nelem) {
         Random rand = new java.util.Random();
-        int nm;
+//        int nm;
         do {
             nmros.insert(rand.nextInt(maxiterar)+1);
             //nmros.insert(rand.nextInt(maxiterar)+1); 
@@ -40,7 +40,17 @@ public class Chave {
 
     @Override
     public String toString() {
-        return "Chave{" + "numeros=" + numeros.getElements() + ", estrelas=" + estrelas.getElements() + '}';
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append(String.format("%-15s:","Numeros Gerados"));
+        sb.append(numeros.getElements());
+        sb.append("/n");
+        
+        sb.append(String.format("%-15s:","Estrelas Geradas"));
+        sb.append(estrelas.getElements());
+        sb.append("/n");
+        
+        return sb.toString();//"Chave{" + "numeros=" + numeros.getElements() + ", estrelas=" + estrelas.getElements() + '}';
     }
 
 }

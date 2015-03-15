@@ -1,6 +1,5 @@
 package bitmilhoes.model;
 
-import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
@@ -20,27 +19,31 @@ public class GestorAposta implements IGestorAposta {
     private Sorteio sorteio;
     private IContainerOperations<Apostador> apostadores;
 
-    public GestorAposta() {
+    public GestorAposta() {//cria uma LISTA com todos APOSTADORES(MOVIMENTOS e APOSTAS)
         apostadores = new ContainerSet();
     }
     
     
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
-        return apostadores.insert(new Apostador(telefone, pin, nome, dataNascimento, saldo));//funciona
+        //INSERE APOSTADOR
+        return apostadores.insert(new Apostador(telefone, pin, nome, dataNascimento, saldo));
     }
 
     @Override
-    public boolean alterarPin(int telefone, short pinActual, short pinNovo) {//Aqui
-        if (!validaApostador(telefone, pinActual))
+    public boolean alterarPin(int telefone, short pinActual, short pinNovo) {
+        //Procura apostador pelo PIN e TELEFONE
+        if (!validaApostador(telefone, pinActual)){
             return false;
+        }
         
         Apostador apostador = apostadores.getElement(new Apostador(telefone));
-        if (apostador == null)
+        if (apostador == null){
             return false;
+        }
         
-        
-       return apostador.alterarPin(pinNovo, pinActual);
+        //ALTERA PIN se APOSTADOR existe
+        return apostador.alterarPin(pinNovo, pinActual);
     }
 
     @Override
@@ -52,27 +55,28 @@ public class GestorAposta implements IGestorAposta {
             return false;
         
         return (apostador.getPin() == pinActual);
-    
     }
 
     @Override
     public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
-        //aceder o cerditar do apostador
+        //VALIDA APOSTADOR
         if(validaApostador(telefone, pin)){
-            descricao = "Creditar";//descreve o motivo
-            //aceder ao apostador e getCreditar(montante)
-            Apostador apostador = apostadores.getElement(new Apostador(telefone, (short) pin));//cria um novo apostador
-            return apostador.creditar(montante);//depende da verificação do método creditar();
+            //descreve o motivo
+            Apostador apostador = apostadores.getElement(new Apostador(telefone));
+            apostador.criarMovimento(descricao, montante, Natureza.CREDITO);
+            return true;
         }
         return false;
     }
 
     @Override //descricao -> motivo de levantamento
     public boolean levantarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
-        if(validaApostador(telefone, pin)){//existe
-            descricao = "Levantamento";
-            Apostador apostador = apostadores.getElement(new Apostador(telefone, (short)pin));
-            return apostador.debitar(montante);//depende da verificação do método debitar()
+        //VALIDA APOSTADOR
+        if(validaApostador(telefone, pin)){
+            //descreve o motivo
+            Apostador apostador = apostadores.getElement(new Apostador(telefone));
+            apostador.criarMovimento(descricao, montante, Natureza.DEBITO);
+            return true;
         }
         
         return false;
@@ -99,6 +103,7 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public IContainerOperations<Apostador> listarApostadoresNome() {
+//        apostadores.getElements().
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -124,13 +129,13 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public boolean iniciarCicloApostas() {
-        return iniciarCicloApostas();
+        return (sorteio.iniciarCicloApostas());
     }
 
     @Override
     public Chave efectuarSorteio() {//chave aleatória
-        
 //        apostadores.getElements().contains(this)
+        
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -138,34 +143,19 @@ public class GestorAposta implements IGestorAposta {
     @Override
     //public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
     public Chave efectuarSorteio(ContainerSet<Integer> nums, ContainerSet<Integer> ests) {//chave personalizada, chama a efetuarSorteio() de cima
+       
+        //sorteio.efectuarSorteio(nums, ests);
+        //Sorteio sorte = new Sorteio();
+        //sorteio.efectuarSorteio(nums, ests);
         
-//        if(nums !=null && ests != null){
-//        apostadores.getElements().contains(nums);//tem os numeros
-//        apostadores.getElements().contains(ests);//tem as estrelas
-//        } //este é no da sorteio
-        //List<Sorteio> sorteio = new Sorteio();
-        //sorteio.
-        //return Sorteio.efectuarSorteio(List<Integer> nums, List<Integer> ests);
-//        return Chave.doGerar(nums, maxiterar, nelem);
-        
-        //verificar se o sorteio foi realizado
-//        if(!sorteio.isRealizado()){//true? Então foi realizado
-//            //se realizado
-//            sorteio.efectuarSorteio(nums, ests);
-//        }
-        
-        //atribui chave?
-//        return 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void inicializaNrApostadores() {//'apaga' os apostadores
-        //total de apostadores
-        //iterador para aqui e remove enquanto há next
-        
-        //apostadores.remove();
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!apostadores.isEmpty()){
+        apostadores.getElements().clear();
+        }        
     }
 
     public List<Apostador> getApostadores() {

@@ -59,8 +59,17 @@ public class Aposta implements IAposta {
 
     @Override
     public String toString() {
-        //return "Aposta{" + "dataRegisto=" + dataRegisto + ", valorPremio=" + valorPremio + ", apostador=" + apostador + ", chave=" + chave + ", premioAtribuido=" + premioAtribuido + ", chaveAposta=" + chaveAposta + '}';
-        return "Aposta{" + "dataRegisto=" + dataRegisto + ", valorPremio=" + valorPremio + ", chave=" + chave + ", premioAtribuido=" + premioAtribuido + ", chaveAposta=" + chaveAposta + "}";
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append(String.format("%-15s:","Apostador"));
+        sb.append(getApostador());
+        sb.append("/n");
+        
+        sb.append(String.format("%-15s:","Data Registo"));
+        sb.append(getDataRegisto());
+        sb.append("/n");
+        
+        return sb.toString();//"Aposta{" + "dataRegisto=" + dataRegisto + ", valorPremio=" + valorPremio + ", chave=" + chave + ", premioAtribuido=" + premioAtribuido + ", chaveAposta=" + chaveAposta + "}";
     }
 
 }
