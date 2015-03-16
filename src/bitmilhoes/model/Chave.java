@@ -37,6 +37,14 @@ public class Chave {
         this.numeros=numeros;
     }
 
+    public IContainerOperations getNumeros() {
+        return numeros;
+    }
+
+    public IContainerOperations getEstrelas() {
+        return estrelas;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

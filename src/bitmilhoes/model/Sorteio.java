@@ -81,7 +81,7 @@ public class Sorteio implements ISorteio {
             //lances.getElements().clear();
             lances = new ContainerList();
             return true;
-        }
+        }else
         return false;
     }
 
@@ -96,9 +96,8 @@ public class Sorteio implements ISorteio {
     @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         if(!isRealizado()) realizado=true;
-        chaveVencedora=new Chave();
-        if(lances.getElements().contains(nums) && lances.getElements().contains(ests)){//chave prémio
-        }
+        chaveVencedora=new Chave(nums, ests);
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

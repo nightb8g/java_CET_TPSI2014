@@ -134,19 +134,16 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public Chave efectuarSorteio() {
-        //chave aleatória
-//        apostadores.getElements().contains(this)
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sorteio=new Sorteio();
+        Chave chave=new Chave();
+        sorteio.efectuarSorteio(chave.getNumeros(), chave.getEstrelas());
+        return chave;
     }
 
         @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
-        //sorteio.efectuarSorteio(nums, ests);
-        //Sorteio sorte = new Sorteio();
-        //sorteio.efectuarSorteio(nums, ests);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sorteio.efectuarSorteio(nums, ests);
+        return new Chave(nums, ests);
     }
 
     @Override
