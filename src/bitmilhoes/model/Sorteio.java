@@ -44,7 +44,7 @@ public class Sorteio implements ISorteio {
     /**
      * Numero de registos de apostas ate ao momento.
      */
-    private static int nrRegistos;// passei a static pois vai ser a variavel contador e como só conta o lance
+    private int nrRegistos;// passei a static pois vai ser a variavel contador e como só conta o lance
     /**
      * Indica se o sorteio foi ou n�o realizado.
      */
@@ -57,34 +57,31 @@ public class Sorteio implements ISorteio {
     /**
      * Cont�m as apostas realizadas para o presente sorteio.
      */
-    private ContainerList lances;
+    private IContainerOperations<Aposta> lances;
     private Chave chaveVencedora;
 
-    //este é o construts, logo inicializa os atributos
+    //este é o construts, logo inicializa obs atributos
     public Sorteio(){//Preenchi este
         lances = new ContainerList();//inicializa uma lista de lances
         dataSorteio = java.time.LocalDateTime.now();//capta a data atual quando chama o construtor
         realizado = false;//o sorteio é criado, mas ainda não inicializado
-        chaveVencedora = new Chave();//gera a chave aleatória, combinação para ganhar 1º prémio
+        //chaveVencedora = new Chave();//gera a chave aleatória, combinação para ganhar 1º prémio
+        chaveVencedora = null;//A chave é gerada no sorteio
+        nrRegistos=lances.size();
     }
 
     public void inicializaSorteio(){
         //verifica se foi realizado o sorteio
-        if(realizado != true){//não foi realizado
-            //iniciar sorteio
-            realizado = true;
-        }
+      iniciarCicloApostas();
     }
 
     @Override
     public boolean iniciarCicloApostas() {
-       
         if(isRealizado()){
             //lances.getElements().clear();
             lances = new ContainerList();
             return true;
         }
-        
         return false;
     }
 
@@ -92,12 +89,14 @@ public class Sorteio implements ISorteio {
     public boolean validarChave(Chave chave) {
         //recebe chave
         //verifico se é igual à chaveVencedora
-        return chave.toString().contains(chaveVencedora.toString());
+        
+        return chave!=null;
     }
 
     @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
-        Chave chaveAux = null;
+        if(!isRealizado()) realizado=true;
+        chaveVencedora=new Chave();
         if(lances.getElements().contains(nums) && lances.getElements().contains(ests)){//chave prémio
         }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -118,7 +117,6 @@ public class Sorteio implements ISorteio {
 
     @Override
     public void registaAposta(Aposta aposta) {
-        nrRegistos++;//por cada lance adiona +1 registo
         lances.insert(aposta);
     }
 
@@ -134,7 +132,7 @@ public class Sorteio implements ISorteio {
 
     @Override
     public boolean isRealizado() {
-        return getDataSorteio().isAfter(java.time.LocalDateTime.now());
+        return realizado;
     }
 
     @Override
