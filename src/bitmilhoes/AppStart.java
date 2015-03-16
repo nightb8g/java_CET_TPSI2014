@@ -26,7 +26,7 @@ public class AppStart extends Application {
         //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
         
         ga.efectuarSorteio();
-        
+        System.out.println(ga.toString());
         Platform.exit();
     }
 

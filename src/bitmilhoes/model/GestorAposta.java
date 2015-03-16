@@ -163,4 +163,10 @@ public class GestorAposta implements IGestorAposta {
     public Apostador getApostador(int telefone, short pin){
         return apostadores.getElement(new Apostador(telefone, pin));
     }
+
+    @Override
+    public String toString() {
+        return "GestorAposta{" + "sorteio=" + sorteio + ", apostadores=" + apostadores + '}';
+    }
+    
 }

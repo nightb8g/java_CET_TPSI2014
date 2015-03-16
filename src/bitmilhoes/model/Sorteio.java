@@ -97,8 +97,7 @@ public class Sorteio implements ISorteio {
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         if(!isRealizado()) realizado=true;
         chaveVencedora=new Chave(nums, ests);
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Chave(nums, ests);
     }
     
     @Override
