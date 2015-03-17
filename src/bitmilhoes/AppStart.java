@@ -5,6 +5,7 @@
  */
 package bitmilhoes;
 
+import bitmilhoes.model.Chave;
 import bitmilhoes.model.GestorAposta;
 import bitmilhoes.model.IGestorAposta;
 import javafx.application.Application;
@@ -24,8 +25,10 @@ public class AppStart extends Application {
         ga.novoApostador(212, (short) 1234, "OP", java.time.LocalDate.now(), 30);
         ga.apostaAleatoria(212, (short) 1234);
         //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
-        
-        ga.efectuarSorteio();
+        Chave c=new Chave();
+        ga.apostaPersonalizada(212, (short) 1234, c.getNumeros(),c.getEstrelas());
+        ga.efectuarSorteio(c.getNumeros(),c.getEstrelas());
+        System.out.println(ga);
         System.out.println(ga.toString());
         Platform.exit();
     }

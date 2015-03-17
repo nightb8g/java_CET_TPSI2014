@@ -3,6 +3,7 @@ package bitmilhoes.model;
 import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 
 
 
@@ -67,7 +68,7 @@ public class Sorteio implements ISorteio {
         realizado = false;//o sorteio é criado, mas ainda não inicializado
         //chaveVencedora = new Chave();//gera a chave aleatória, combinação para ganhar 1º prémio
         chaveVencedora = null;//A chave é gerada no sorteio
-        nrRegistos=lances.size();
+        nrRegistos=0;
     }
 
     public void inicializaSorteio(){
@@ -97,7 +98,13 @@ public class Sorteio implements ISorteio {
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         if(!isRealizado()) realizado=true;
         chaveVencedora=new Chave(nums, ests);
-        return new Chave(nums, ests);
+        
+        Iterator<Aposta> it=lances.getIterador();
+       
+        
+        
+       // return new Chave(nums, ests);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     @Override
@@ -116,6 +123,7 @@ public class Sorteio implements ISorteio {
     @Override
     public void registaAposta(Aposta aposta) {
         lances.insert(aposta);
+        nrRegistos=lances.size();
     }
 
     @Override
@@ -133,25 +141,30 @@ public class Sorteio implements ISorteio {
         return realizado;
     }
 
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(String.format("%-15s:","Data Sorteio"));
+//        sb.append(getDataSorteio());
+//        sb.append("/n");
+//        
+//        sb.append(String.format("%-15s:","Sorteio Realizado"));
+//        sb.append(isRealizado());
+//        sb.append("/n");
+//        
+//        sb.append(String.format("%-15s:","Primeiro Premio"));
+//        sb.append(getPrimeiroPremio());
+//        sb.append("/n");
+//        
+//        sb.append(String.format("%-15s:","Lances"));
+//        sb.append(getLances());
+//        sb.append("/n");
+//
+//        return sb.toString();//"Sorteio{" + "dataSorteio=" + dataSorteio + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances + ", chaveVencedora=" + chaveVencedora + '}';
+//    }      
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-15s:","Data Sorteio"));
-        sb.append(getDataSorteio());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Sorteio Realizado"));
-        sb.append(isRealizado());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Primeiro Premio"));
-        sb.append(getPrimeiroPremio());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Lances"));
-        sb.append(getLances());
-        sb.append("/n");
-
-        return sb.toString();//"Sorteio{" + "dataSorteio=" + dataSorteio + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances + ", chaveVencedora=" + chaveVencedora + '}';
-    }      
+        return "Sorteio{" + "dataSorteio=" + dataSorteio + ", nrRegistos=" + nrRegistos + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances + ", chaveVencedora=" + chaveVencedora + '}';
+    }
 }

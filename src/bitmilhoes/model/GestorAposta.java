@@ -20,10 +20,10 @@ public class GestorAposta implements IGestorAposta {
     private IContainerOperations<Apostador> apostadores;
 
     public GestorAposta() {//cria uma LISTA com todos APOSTADORES(MOVIMENTOS e APOSTAS)
+        sorteio = new Sorteio();
         apostadores = new ContainerSet();
     }
-    
-    
+
     @Override
     public boolean novoApostador(int telefone, short pin, String nome, LocalDate dataNascimento, float saldo) {
         //INSERE APOSTADOR
@@ -33,15 +33,15 @@ public class GestorAposta implements IGestorAposta {
     @Override
     public boolean alterarPin(int telefone, short pinActual, short pinNovo) {
         //Procura apostador pelo PIN e TELEFONE
-        if (!validaApostador(telefone, pinActual)){
+        if (!validaApostador(telefone, pinActual)) {
             return false;
         }
-        
+
         Apostador apostador = apostadores.getElement(new Apostador(telefone));
-        if (apostador == null){
+        if (apostador == null) {
             return false;
         }
-        
+
         //ALTERA PIN se APOSTADOR existe
         return apostador.alterarPin(pinNovo, pinActual);
     }
@@ -49,18 +49,17 @@ public class GestorAposta implements IGestorAposta {
     @Override
     public boolean validaApostador(int telefone, short pinActual) {//Aqui
         //verificar se o utilizador existe (telefone)
-        
         Apostador apostador = apostadores.getElement(new Apostador(telefone));
-        if (apostador==null)
+        if (apostador == null) {
             return false;
-        
+        }
         return (apostador.getPin() == pinActual);
     }
 
     @Override
     public boolean creditarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
         //VALIDA APOSTADOR
-        if(validaApostador(telefone, pin)){
+        if (validaApostador(telefone, pin)) {
             //descreve o motivo
             Apostador apostador = apostadores.getElement(new Apostador(telefone));
             apostador.criarMovimento(descricao, montante, Natureza.CREDITO);
@@ -72,33 +71,35 @@ public class GestorAposta implements IGestorAposta {
     @Override //descricao -> motivo de levantamento
     public boolean levantarMontante(int telefone, short pin, String descricao, float montante) {//A mexer Aqui!!!
         //VALIDA APOSTADOR
-        if(validaApostador(telefone, pin)){
+        if (validaApostador(telefone, pin)) {
             //descreve o motivo
             Apostador apostador = apostadores.getElement(new Apostador(telefone));
             apostador.criarMovimento(descricao, montante, Natureza.DEBITO);
             return true;
+        } else {
+            return false;
         }
-        
-        return false;
     }
 
     @Override
     public Apostador removerApostador(int telefone, short pin) {
-        Apostador apostador = null;
-        if (!validaApostador(telefone, pin))
-            return apostador;
-        
-        return apostadores.remove(apostador);
+        if (!validaApostador(telefone, pin)) {
+            return null;
+        } else {
+            return apostadores.remove(new Apostador(telefone, pin));
+        }
+        // throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void apostaAleatoria(int telefone, short pin) {
-            getApostador(telefone, pin).criarAposta(new Chave());
+        sorteio.registaAposta(getApostador(telefone, pin).criarAposta(new Chave()));
+        
     }
 
     @Override
     public void apostaPersonalizada(int telefone, short pin, IContainerOperations<Integer> numeros, IContainerOperations<Integer> estrelas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sorteio.registaAposta(getApostador(telefone, pin).criarAposta(new Chave(numeros, estrelas)));
     }
 
     @Override
@@ -134,13 +135,12 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public Chave efectuarSorteio() {
-        sorteio=new Sorteio();
-        Chave chave=new Chave();
+        Chave chave = new Chave();
         sorteio.efectuarSorteio(chave.getNumeros(), chave.getEstrelas());
         return chave;
     }
 
-        @Override
+    @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         sorteio.efectuarSorteio(nums, ests);
         return new Chave(nums, ests);
@@ -148,19 +148,20 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public void inicializaNrApostadores() {//'apaga' os apostadores
-        if(!apostadores.isEmpty()){
-        apostadores.getElements().clear();
-        }        
+        if (!apostadores.isEmpty()) {
+            apostadores.getElements().clear();
+        }
     }
 
     public List<Apostador> getApostadores() {
         return apostadores.getElements();
     }
-    
-    public Apostador getApostador(Apostador apostador){
+
+    public Apostador getApostador(Apostador apostador) {
         return apostadores.getElement(apostador);
     }
-    public Apostador getApostador(int telefone, short pin){
+
+    public Apostador getApostador(int telefone, short pin) {
         return apostadores.getElement(new Apostador(telefone, pin));
     }
 
@@ -168,5 +169,5 @@ public class GestorAposta implements IGestorAposta {
     public String toString() {
         return "GestorAposta{" + "sorteio=" + sorteio + ", apostadores=" + apostadores + '}';
     }
-    
+
 }
