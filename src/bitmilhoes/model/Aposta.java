@@ -21,7 +21,7 @@ public class Aposta implements IAposta {
     /**
      * Valor do pr�mio atibuido a esta aposta.
      */
-    private float valorPremio = 0;
+    private float valorPremio;
     private Apostador apostador;
     private Chave chave; // Chave com o prémio
     private Premio premioAtribuido;
@@ -32,6 +32,7 @@ public class Aposta implements IAposta {
         this.apostador = apostador;
         this.chaveAposta = chave;
         this.dataRegisto = java.time.LocalDateTime.now();
+        this.valorPremio=0;
     }
     
     @Override

@@ -5,6 +5,9 @@
  */
 package bitmilhoes;
 
+import bitmilhoes.containers.ContainerList;
+import bitmilhoes.containers.ContainerSet;
+import bitmilhoes.containers.IContainerOperations;
 import bitmilhoes.model.Chave;
 import bitmilhoes.model.GestorAposta;
 import bitmilhoes.model.IGestorAposta;
@@ -25,7 +28,17 @@ public class AppStart extends Application {
         ga.novoApostador(212, (short) 1234, "OP", java.time.LocalDate.now(), 30);
         ga.apostaAleatoria(212, (short) 1234);
         //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
-        Chave c=new Chave();
+        
+        IContainerOperations<Integer> nums=new ContainerSet<>();
+        IContainerOperations<Integer> ests=new ContainerSet<>();
+        nums.insert(3);
+        nums.insert(6);
+        nums.insert(9);
+        nums.insert(12);
+        nums.insert(15);
+        ests.insert(3);
+        ests.insert(6);
+        Chave c=new Chave(nums,ests);
         ga.apostaPersonalizada(212, (short) 1234, c.getNumeros(),c.getEstrelas());
         ga.efectuarSorteio(c.getNumeros(),c.getEstrelas());
         System.out.println(ga);

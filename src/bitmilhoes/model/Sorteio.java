@@ -96,15 +96,22 @@ public class Sorteio implements ISorteio {
 
     @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
-        if(!isRealizado()) realizado=true;
+        if(isRealizado()) return null;
+               realizado=true;
         chaveVencedora=new Chave(nums, ests);
-        
         Iterator<Aposta> it=lances.getIterador();
-       
+       while(it.hasNext())
+       {
+          Aposta ap=it.next();
+          int numcount=0,estcount=0;
+          
+          if(chaveVencedora.getNumeros().getElements().contains(ap.getChave().getNumeros().getElements()));
+          numcount++;
+       }
         
-        
-       // return new Chave(nums, ests);
-        throw new UnsupportedOperationException("Not supported yet.");
+ 
+       return new Chave(nums, ests);
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
     
     @Override

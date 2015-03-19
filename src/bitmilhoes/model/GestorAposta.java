@@ -3,6 +3,7 @@ package bitmilhoes.model;
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -135,9 +136,8 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public Chave efectuarSorteio() {
-        Chave chave = new Chave();
-        sorteio.efectuarSorteio(chave.getNumeros(), chave.getEstrelas());
-        return chave;
+        Chave chave=new Chave();
+            return sorteio.efectuarSorteio(chave.getNumeros(),chave.getEstrelas());
     }
 
     @Override
