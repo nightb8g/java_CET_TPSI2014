@@ -85,6 +85,10 @@ public class Apostador implements IApostador {
 
     public void criarMovimento(String descricao, float valor, Natureza natureza) {
         movimentos.insert(new Movimento(LocalDateTime.now(), descricao, valor, natureza));
+        if(natureza.equals(Natureza.DEBITO))
+            debitar(valor);
+        else if(natureza.equals(Natureza.CREDITO))
+            creditar(valor);
     }
 
     @Override
@@ -123,7 +127,7 @@ public class Apostador implements IApostador {
         Aposta aux = new Aposta(this, chave);
         apostas.insert(aux);
         //cria o movimento
-        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO));
+        criarMovimento("Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO);
         //Adiciona o lance ao sorteio
         return aux;
     }
@@ -174,8 +178,6 @@ public class Apostador implements IApostador {
     public int getTelefone() {
         return telefone;
     }
-    
-    
 
     @Override
     public String toString() {

@@ -136,7 +136,9 @@ public class Sorteio implements ISorteio {
             Aposta aposta = apostas.next();
             for (Premio premio : PREMIOS) {
                 if (aposta.getPremio() != null && aposta.getPremio().equals(premio)) {
-                    aposta.setValorPremio((total * premio.getPercentagem()) / ordinal[premio.getOrdinal()]);
+                    float val=(total * premio.getPercentagem()) / ordinal[premio.getOrdinal()];
+                    aposta.setValorPremio(val);
+                    aposta.getApostador().criarMovimento("Aposta ganha!", val, Natureza.CREDITO);
                 }
             }
         }
