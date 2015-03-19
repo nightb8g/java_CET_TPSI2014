@@ -104,28 +104,28 @@ public class GestorAposta implements IGestorAposta {
     }
 
     @Override
-    public IContainerOperations<Apostador> listarApostadoresNome() {
+    public List<Apostador> listarApostadoresNome() {
 //        apostadores.getElements().
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public IContainerOperations<Apostador> listarApostadoresDataNascimento() {
+    public List<Apostador> listarApostadoresDataNascimento() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public IContainerOperations<Apostador> listarApostadoresSaldo() {
+    public List<Apostador> listarApostadoresSaldo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public IContainerOperations<Aposta> listarPremiosUltimoSorteio() {
+    public List<Aposta> listarPremiosUltimoSorteio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public IContainerOperations<Movimento> listarMovimentosApostador(int telefone, short pin) {
+    public List<Movimento> listarMovimentosApostador(int telefone, short pin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
