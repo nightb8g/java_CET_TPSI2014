@@ -43,7 +43,7 @@ public class AppStart extends Application {
         
         ga.efectuarSorteio(c.getNumeros(),c.getEstrelas());
         Apostador ap = ga.getApostador(212,(short) 1234);
-        System.out.println(ga.getApostador(212,(short) 1234).getApostas().get(1));
+        System.out.println(ga.getApostador(212,(short) 1234));
         Platform.exit();
     }
 
