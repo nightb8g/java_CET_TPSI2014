@@ -105,7 +105,7 @@ public class Sorteio implements ISorteio {
         Iterator<Aposta> apostas = lances.getIterador();
         float total = PRECO_REGISTO_APOSTA * nrRegistos * PERCENTAGEM_PARA_PREMIOS;
 
-        int[] ordinal = new int[PREMIOS.length+1];
+        int[] ordinal = new int[PREMIOS.length + 1];
         while (apostas.hasNext()) {
             int numscount = 0, estrelascount = 0;
             Aposta aposta = apostas.next();
@@ -130,13 +130,14 @@ public class Sorteio implements ISorteio {
                 }
             }
         }
+        //Atribuição de valor do Prémio
         apostas = lances.getIterador();
         while (apostas.hasNext()) {
             Aposta aposta = apostas.next();
             for (Premio premio : PREMIOS) {
-                if (aposta.getPremio()!=null && aposta.getPremio().equals(premio)) {                 
-                    aposta.setValorPremio((total*premio.getPercentagem())/ordinal[premio.getOrdinal()]);
-               }
+                if (aposta.getPremio() != null && aposta.getPremio().equals(premio)) {
+                    aposta.setValorPremio((total * premio.getPercentagem()) / ordinal[premio.getOrdinal()]);
+                }
             }
         }
         primeiroPremio = PREMIOS[0];
