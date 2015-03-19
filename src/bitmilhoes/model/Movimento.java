@@ -45,25 +45,25 @@ public class Movimento implements IMovimento {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+//        StringBuilder sb = new StringBuilder();
+//        
+//        sb.append(String.format("%-15s:","Data de Movimento:"));
+//        sb.append(getDataMovimento());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s:","Descrição"));
+//        sb.append(getDescricao());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s:","Valor"));
+//        sb.append(getValor());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s:","Natureza"));
+//        sb.append(getNatureza());
+//        sb.append("\n");
         
-        sb.append(String.format("%-15s:","Data de Movimento"));
-        sb.append(getDataMovimento());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Descrição"));
-        sb.append(getDescricao());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Valor"));
-        sb.append(getValor());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Natureza"));
-        sb.append(getNatureza());
-        sb.append("/n");
-        
-        return sb.toString();//"Movimento{" + "dataMovimento=" + dataMovimento + ", descricao=" + descricao + ", valor=" + valor + ", natureza=" + natureza + '}';
+        return "Movimento{" + "dataMovimento=" + dataMovimento + ", descricao=" + descricao + ", valor=" + valor + ", natureza=" + natureza + '}';
     }
 
     

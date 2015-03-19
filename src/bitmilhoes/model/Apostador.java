@@ -180,16 +180,16 @@ public class Apostador implements IApostador {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        
-        sb.append(String.format("%-15s:","Telefone"));
-        sb.append(getTelefone());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Nome"));
-        sb.append(getNome());
-        sb.append("/n");
-        
+//        StringBuilder sb = new StringBuilder();
+//        
+//        sb.append(String.format("%-15s","Telefone:"));
+//        sb.append(getTelefone());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Nome:"));
+//        sb.append(getNome());
+//        sb.append("\n");
+//        
 //        sb.append(String.format("%-15s:","Data de Movimento"));
 //        sb.append(getPin());
 //        sb.append("/n");
@@ -197,20 +197,20 @@ public class Apostador implements IApostador {
 //        sb.append(String.format("%-15s:","Data Saldo"));
 //        sb.append(getDataSaldo());
 //        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Saldo"));
-        sb.append(getSaldo());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Movimentos"));
-        sb.append(getMovimentos());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Apostas"));
-        sb.append(getApostas());
-        sb.append("/n");
-        
-        return sb.toString();//"Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
+//        
+//        sb.append(String.format("%-15s","Saldo:"));
+//        sb.append(getSaldo());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Movimentos:"));
+//        sb.append(getMovimentos());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Apostas:"));
+//        sb.append(getApostas());
+//        sb.append("\n");
+//        
+        return "Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos + ", apostas=" + apostas + '}';
     }
 
     @Override

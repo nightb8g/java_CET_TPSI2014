@@ -101,6 +101,7 @@ public class Sorteio implements ISorteio {
         realizado=true;
         chaveVencedora=new Chave(nums, ests);
         Iterator<Aposta> apostas=lances.getIterador();
+        float total=PRECO_REGISTO_APOSTA*nrRegistos*PERCENTAGEM_PARA_PREMIOS;
         while(apostas.hasNext()){
             int numscount = 0, estrelascount=0;
             Aposta aposta= apostas.next();
@@ -115,10 +116,16 @@ public class Sorteio implements ISorteio {
              //Atribuição de Prémios
              for (Premio premio : PREMIOS) {
                 if(premio.getNumero()==numscount && premio.getEstrela()==estrelascount)
+                {
                     aposta.setPremioAtribuido(premio);
+                }
             }
         }
-        
+        while(apostas.hasNext())
+        {
+            Aposta aposta= apostas.next();
+            
+        }
         primeiroPremio=PREMIOS[0];
        return new Chave(nums, ests);
         //throw new UnsupportedOperationException("Not supported yet.");

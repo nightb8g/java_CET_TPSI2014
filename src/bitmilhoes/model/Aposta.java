@@ -35,6 +35,14 @@ public class Aposta implements IAposta {
         this.valorPremio=0;
     }
 
+    protected void setChave(Chave chave) {
+        this.chave = chave;
+    }
+
+    protected void setValorPremio(float valorPremio) {
+        this.valorPremio = valorPremio;
+    }
+
     protected void setPremioAtribuido(Premio premioAtribuido) {
         this.premioAtribuido = premioAtribuido;
     }
@@ -61,17 +69,17 @@ public class Aposta implements IAposta {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+//        StringBuilder sb = new StringBuilder();
+//        
+//        sb.append(String.format("%-15s:","Apostador"));
+//        sb.append(getApostador());
+//        sb.append("/n");
+//        
+//        sb.append(String.format("%-15s:","Data Registo"));
+//        sb.append(getDataRegisto());
+//        sb.append("/n");
         
-        sb.append(String.format("%-15s:","Apostador"));
-        sb.append(getApostador());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Data Registo"));
-        sb.append(getDataRegisto());
-        sb.append("/n");
-        
-        return sb.toString();//"Aposta{" + "dataRegisto=" + dataRegisto + ", valorPremio=" + valorPremio + ", chave=" + chave + ", premioAtribuido=" + premioAtribuido + ", chaveAposta=" + chaveAposta + "}";
+        return "Aposta{" + "dataRegisto=" + dataRegisto + ", valorPremio=" + valorPremio + ", chave=" + chave + ", premioAtribuido=" + premioAtribuido + ", chaveAposta=" + chaveAposta + "}";
     }
 
 }

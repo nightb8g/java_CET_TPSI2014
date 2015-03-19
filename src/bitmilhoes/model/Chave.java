@@ -47,17 +47,17 @@ public class Chave {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+//        StringBuilder sb = new StringBuilder();
+//        
+//        sb.append(String.format("%-15s","Numeros Gerados:"));
+//        sb.append(numeros);
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Estrelas Geradas:"));
+//        sb.append(estrelas);
+//        sb.append("\n");
         
-        sb.append(String.format("%-15s:","Numeros Gerados"));
-        sb.append(numeros.getElements());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Estrelas Geradas"));
-        sb.append(estrelas.getElements());
-        sb.append("/n");
-        
-        return sb.toString();//"Chave{" + "numeros=" + numeros.getElements() + ", estrelas=" + estrelas.getElements() + '}';
+        return "Chave{" + "numeros=" + numeros.getElements() + ", estrelas=" + estrelas.getElements() + '}';
     }
 
 }
