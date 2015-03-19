@@ -5,13 +5,11 @@
  */
 package bitmilhoes;
 
-import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import bitmilhoes.model.Apostador;
 import bitmilhoes.model.Chave;
 import bitmilhoes.model.GestorAposta;
-import bitmilhoes.model.IGestorAposta;
 import javafx.application.Application;
 import javafx.application.Platform;
 
