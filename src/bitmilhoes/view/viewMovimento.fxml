@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bitmilhoes.controller.ViewMovimentoController">
+    <stylesheets>
+        <URL value="@/bitmilhoes/style/viewmovimento.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TableView fx:id="viewMovimento" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="49.0" text="ID" />
+                <TableColumn prefWidth="111.0" text="Telefone" />
+                  <TableColumn prefWidth="231.0" text="Nome" />
+                  <TableColumn minWidth="0.0" prefWidth="110.0" text="Data Movimento" />
+                  <TableColumn prefWidth="98.0" text="Saldo" />
+              </columns>
+            </TableView>
+         </center>
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button fx:id="btnDebitar" mnemonicParsing="false" text="Debitar" />
+                  <Button fx:id="btnDepositar" mnemonicParsing="false" text="Depositar" />
+              </items>
+            </ToolBar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

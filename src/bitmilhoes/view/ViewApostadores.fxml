@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bitmilhoes.controller.ViewApostadoresController">
+    <stylesheets>
+        <URL value="@/bitmilhoes/style/viewapostadores.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button fx:id="btnAdicionar" mnemonicParsing="false" text="Adicionar" />
+                  <Button fx:id="btnEditar" mnemonicParsing="false" text="Editar" />
+              </items>
+            </ToolBar>
+         </top>
+         <center>
+            <TableView fx:id="viewApostador" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID" />
+                <TableColumn prefWidth="91.0" text="Telefone" />
+                  <TableColumn prefWidth="221.0" text="Nome" />
+                  <TableColumn prefWidth="115.0" text="Data Nascimento" />
+                  <TableColumn prefWidth="97.0" text="Saldo" />
+              </columns>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

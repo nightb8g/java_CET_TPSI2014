@@ -106,21 +106,21 @@ public interface IGestorAposta {
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public IContainerOperations<Apostador> listarApostadoresNome();
+    public List<Apostador> listarApostadoresNome();
 
     /**
      * Lista os apostadores por data de nascimento 
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados 
      */
-    public IContainerOperations<Apostador> listarApostadoresDataNascimento();
+    public List<Apostador> listarApostadoresDataNascimento();
 
     /**
      * Lista os apostadores pelo seu saldo
      *
      * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public IContainerOperations<Apostador> listarApostadoresSaldo();
+    public List<Apostador> listarApostadoresSaldo();
 
     /**
      * Listar os premios atribuidos no ultimo sorteio, juntamente com as chaves
@@ -128,7 +128,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public IContainerOperations<Aposta> listarPremiosUltimoSorteio();
+    public List<Aposta> listarPremiosUltimoSorteio();
 
     /**
      * Lista os movimentos de um apostador por ordem crescente de data e decrescente
@@ -139,7 +139,7 @@ public interface IGestorAposta {
 	 *
 	 * @return List<Apostador> retorna uma lista com os apostadores ordenados
      */
-    public IContainerOperations<Movimento> listarMovimentosApostador(int telefone, short pin);
+    public List<Movimento> listarMovimentosApostador(int telefone, short pin);
 
     /**
      * Reinicia o registo de apostas, eliminando todas as apostas registadas dos

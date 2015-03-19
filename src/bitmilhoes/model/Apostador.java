@@ -4,7 +4,6 @@ import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -86,6 +85,10 @@ public class Apostador implements IApostador {
 
     public void criarMovimento(String descricao, float valor, Natureza natureza) {
         movimentos.insert(new Movimento(LocalDateTime.now(), descricao, valor, natureza));
+        if(natureza.equals(Natureza.DEBITO))
+            debitar(valor);
+        else if(natureza.equals(Natureza.CREDITO))
+            creditar(valor);
     }
 
     @Override
@@ -124,20 +127,19 @@ public class Apostador implements IApostador {
         Aposta aux = new Aposta(this, chave);
         apostas.insert(aux);
         //cria o movimento
-        movimentos.insert(new Movimento(java.time.LocalDateTime.now(), "Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO));
+        criarMovimento("Nova aposta", Sorteio.PRECO_REGISTO_APOSTA, Natureza.DEBITO);
         //Adiciona o lance ao sorteio
-
         return aux;
     }
 
     @Override
-    public IContainerOperations<Aposta> getApostas() {
-        return apostas;
+    public List<Aposta> getApostas() {
+        return apostas.getElements();
     }
 
     @Override
-    public IContainerOperations<Movimento> getMovimentos() {
-        return movimentos;
+    public List<Movimento> getMovimentos() {
+        return movimentos.getElements();
     }
 
     @Override
@@ -176,21 +178,19 @@ public class Apostador implements IApostador {
     public int getTelefone() {
         return telefone;
     }
-    
-    
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        
-        sb.append(String.format("%-15s:","Telefone"));
-        sb.append(getTelefone());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Nome"));
-        sb.append(getNome());
-        sb.append("/n");
-        
+//        StringBuilder sb = new StringBuilder();
+//        
+//        sb.append(String.format("%-15s","Telefone:"));
+//        sb.append(getTelefone());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Nome:"));
+//        sb.append(getNome());
+//        sb.append("\n");
+//        
 //        sb.append(String.format("%-15s:","Data de Movimento"));
 //        sb.append(getPin());
 //        sb.append("/n");
@@ -198,20 +198,20 @@ public class Apostador implements IApostador {
 //        sb.append(String.format("%-15s:","Data Saldo"));
 //        sb.append(getDataSaldo());
 //        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Saldo"));
-        sb.append(getSaldo());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Movimentos"));
-        sb.append(getMovimentos());
-        sb.append("/n");
-        
-        sb.append(String.format("%-15s:","Apostas"));
-        sb.append(getApostas());
-        sb.append("/n");
-        
-        return sb.toString();//"Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
+//        
+//        sb.append(String.format("%-15s","Saldo:"));
+//        sb.append(getSaldo());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Movimentos:"));
+//        sb.append(getMovimentos());
+//        sb.append("\n");
+//        
+//        sb.append(String.format("%-15s","Apostas:"));
+//        sb.append(getApostas());
+//        sb.append("\n");
+//        
+        return "Apostador{" + "telefone=" + telefone + ", nome=" + nome + ", pin=" + pin + ", dataNascimento=" + dataNascimento + ", dataSaldo=" + dataSaldo + ", saldo=" + saldo + ", movimentos=" + movimentos.getElements() + ", apostas=" + apostas.getElements() + '}';
     }
 
     @Override

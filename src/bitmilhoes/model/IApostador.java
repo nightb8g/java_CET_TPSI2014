@@ -40,12 +40,13 @@ public interface IApostador {
     /**
      * Devolve as apostas efectuadas pelo apostador.
      */
-    public IContainerOperations<Aposta> getApostas();
+    public List<Aposta> getApostas();
 
     /**
      * Devolve os movimentos efectuados na conta do apostador.
+     * @return 
      */
-    public IContainerOperations<Movimento> getMovimentos();
+    public List<Movimento> getMovimentos();
 
     public LocalDateTime getDataSaldo();
 
