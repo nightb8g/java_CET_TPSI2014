@@ -44,7 +44,7 @@ public class Sorteio implements ISorteio {
     /**
      * Numero de registos de apostas ate ao momento.
      */
-    private static int nrRegistos;// passei a static pois vai ser a variavel contador e como só conta o lance
+    private int nrRegistos;// passei a static pois vai ser a variavel contador e como só conta o lance
     /**
      * Indica se o sorteio foi ou n�o realizado.
      */
@@ -118,8 +118,10 @@ public class Sorteio implements ISorteio {
 
     @Override
     public void registaAposta(Aposta aposta) {
-        nrRegistos++;//por cada lance adiona +1 registo
+        
         lances.insert(aposta);
+        nrRegistos = lances.size();//como lances é dinamico o nº de registos também o são
+        //acrescentando que 
     }
 
     @Override
@@ -134,7 +136,7 @@ public class Sorteio implements ISorteio {
 
     @Override
     public boolean isRealizado() {
-        return getDataSorteio().isAfter(java.time.LocalDateTime.now());
+        return realizado;
     }
 
     @Override
