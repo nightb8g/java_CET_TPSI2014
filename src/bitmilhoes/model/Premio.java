@@ -35,5 +35,10 @@ public class Premio {
         return numero;
     }
 
+    @Override
+    public String toString() {
+        return "Premio{" + "ordinal=" + ordinal + ", numero=" + numero + ", estrela=" + estrela + ", percentagem=" + percentagem + '}';
+    }
+
     
 }

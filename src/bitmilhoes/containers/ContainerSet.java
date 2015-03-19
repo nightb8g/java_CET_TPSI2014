@@ -71,7 +71,6 @@ public class ContainerSet<E> implements IContainerOperations<E>,
 
         return null;
     }
-
     @Override
     public Iterator<E> getIterador() {
         return elementos.iterator();

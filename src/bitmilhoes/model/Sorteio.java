@@ -4,6 +4,7 @@ import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -111,13 +112,14 @@ public class Sorteio implements ISorteio {
              for(Object num : aposta.getChave().getEstrelas().getElements()) {
                 if(chaveVencedora.getEstrelas().getElements().contains(num)) estrelascount++;
             }
+             //Atribuição de Prémios
              for (Premio premio : PREMIOS) {
                 if(premio.getNumero()==numscount && premio.getEstrela()==estrelascount)
                     aposta.setPremioAtribuido(premio);
             }
         }
         
- 
+        primeiroPremio=PREMIOS[0];
        return new Chave(nums, ests);
         //throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -128,11 +130,11 @@ public class Sorteio implements ISorteio {
     }
 
     @Override
-    public ContainerList<Aposta> getLances() {
+    public List<Aposta> getLances() {
         ContainerList aux=new ContainerList();
         while(lances.getIterador().hasNext())
             aux.insert(lances.getIterador().next());
-       return aux;
+       return aux.getElements();
     }
 
     @Override

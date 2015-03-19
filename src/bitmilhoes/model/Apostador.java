@@ -130,13 +130,13 @@ public class Apostador implements IApostador {
     }
 
     @Override
-    public IContainerOperations<Aposta> getApostas() {
-        return apostas;
+    public List<Aposta> getApostas() {
+        return apostas.getElements();
     }
 
     @Override
-    public IContainerOperations<Movimento> getMovimentos() {
-        return movimentos;
+    public List<Movimento> getMovimentos() {
+        return movimentos.getElements();
     }
 
     @Override
