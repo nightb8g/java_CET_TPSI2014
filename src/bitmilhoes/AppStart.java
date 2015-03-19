@@ -27,7 +27,6 @@ public class AppStart extends Application {
         IGestorAposta ga = new GestorAposta();
         ga.novoApostador(212, (short) 1234, "OP", java.time.LocalDate.now(), 30);
         ga.apostaAleatoria(212, (short) 1234);
-        //ga.creditarMontante(212, (short)1234,"Movimento de Teste", 10f);
         
         IContainerOperations<Integer> nums=new ContainerSet<>();
         IContainerOperations<Integer> ests=new ContainerSet<>();
@@ -39,10 +38,12 @@ public class AppStart extends Application {
         ests.insert(3);
         ests.insert(6);
         Chave c=new Chave(nums,ests);
+        
+        
         ga.apostaPersonalizada(212, (short) 1234, c.getNumeros(),c.getEstrelas());
+        
         ga.efectuarSorteio(c.getNumeros(),c.getEstrelas());
         System.out.println(ga);
-        System.out.println(ga.toString());
         Platform.exit();
     }
 

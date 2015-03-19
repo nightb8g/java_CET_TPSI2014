@@ -70,7 +70,7 @@ public class Sorteio implements ISorteio {
         chaveVencedora = null;//A chave é gerada no sorteio
         nrRegistos=0;
     }
-
+    
     public void inicializaSorteio(){
         //verifica se foi realizado o sorteio
       iniciarCicloApostas();
@@ -91,23 +91,31 @@ public class Sorteio implements ISorteio {
         //recebe chave
         //verifico se é igual à chaveVencedora
         
-        return chave!=null;
+        return chave==chaveVencedora;
     }
 
     @Override
     public Chave efectuarSorteio(IContainerOperations<Integer> nums, IContainerOperations<Integer> ests) {
         if(isRealizado()) return null;
-               realizado=true;
+        realizado=true;
         chaveVencedora=new Chave(nums, ests);
-        Iterator<Aposta> it=lances.getIterador();
-       while(it.hasNext())
-       {
-          Aposta ap=it.next();
-          int numcount=0,estcount=0;
-          
-          if(chaveVencedora.getNumeros().getElements().contains(ap.getChave().getNumeros().getElements()));
-          numcount++;
-       }
+        Iterator<Aposta> apostas=lances.getIterador();
+        while(apostas.hasNext()){
+            int numscount = 0, estrelascount=0;
+            Aposta aposta= apostas.next();
+            //Contador de numeros acertadas
+            for(Object num : aposta.getChave().getNumeros().getElements()) {
+                if(chaveVencedora.getNumeros().getElements().contains(num)) numscount++;
+            }
+            //Contador de estrelas acertadas
+             for(Object num : aposta.getChave().getEstrelas().getElements()) {
+                if(chaveVencedora.getEstrelas().getElements().contains(num)) estrelascount++;
+            }
+             for (Premio premio : PREMIOS) {
+                if(premio.getNumero()==numscount && premio.getEstrela()==estrelascount)
+                    aposta.setPremioAtribuido(premio);
+            }
+        }
         
  
        return new Chave(nums, ests);
@@ -147,6 +155,7 @@ public class Sorteio implements ISorteio {
     public boolean isRealizado() {
         return realizado;
     }
+
 
 //    @Override
 //    public String toString() {

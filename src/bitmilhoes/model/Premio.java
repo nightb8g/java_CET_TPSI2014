@@ -19,5 +19,21 @@ public class Premio {
        this.percentagem=percentagem;
     }
 
+    public float getPercentagem() {
+        return percentagem;
+    }
+
+    public int getOrdinal() {
+        return ordinal;
+    }
+
+    public int getEstrela() {
+        return estrela;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
     
 }

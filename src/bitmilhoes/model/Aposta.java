@@ -34,6 +34,10 @@ public class Aposta implements IAposta {
         this.dataRegisto = java.time.LocalDateTime.now();
         this.valorPremio=0;
     }
+
+    protected void setPremioAtribuido(Premio premioAtribuido) {
+        this.premioAtribuido = premioAtribuido;
+    }
     
     @Override
     public Premio getPremio() {
