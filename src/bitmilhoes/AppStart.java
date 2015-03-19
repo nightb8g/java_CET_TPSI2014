@@ -41,6 +41,7 @@ public class AppStart extends Application {
         Chave c=new Chave(nums,ests);
         
         ga.apostaPersonalizada(212, (short) 1234, c.getNumeros(),c.getEstrelas());
+        ga.apostaPersonalizada(212, (short) 1234, c.getNumeros(),c.getEstrelas());
         
         ga.efectuarSorteio(c.getNumeros(),c.getEstrelas());
         Apostador ap = ga.getApostador(212,(short) 1234);
