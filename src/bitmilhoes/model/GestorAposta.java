@@ -3,7 +3,6 @@ package bitmilhoes.model;
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -105,23 +104,28 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public List<Apostador> listarApostadoresNome() {
-//        apostadores.getElements().
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Apostador> aux= apostadores.getElements();
+       aux.sort(Apostador.NomeComparator);
+      return aux;
     }
 
     @Override
     public List<Apostador> listarApostadoresDataNascimento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          List<Apostador> aux= apostadores.getElements();
+       aux.sort(Apostador.DataNascimentoComparator);
+      return aux;
     }
 
     @Override
     public List<Apostador> listarApostadoresSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Apostador> aux= apostadores.getElements();
+       aux.sort(Apostador.SaldoComparator);
+      return aux;
     }
 
     @Override
     public List<Aposta> listarPremiosUltimoSorteio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

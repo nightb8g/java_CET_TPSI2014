@@ -4,6 +4,7 @@ import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -101,6 +102,11 @@ public class Apostador implements IApostador {
             return false;
         }
     }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
 
     @Override
     public boolean debitar(float valor) {
@@ -235,5 +241,54 @@ public class Apostador implements IApostador {
         }
         return true;
     }
+
+    
+    
+ public static Comparator<Apostador> NomeComparator = new Comparator<Apostador>() {
+
+        @Override
+	public int compare(Apostador s1, Apostador s2) {
+	   String StudentName1 = s1.getNome().toUpperCase();
+	   String StudentName2 = s2.getNome().toUpperCase();
+
+	   //ascending order
+	   return StudentName1.compareTo(StudentName2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
+
+   public static Comparator<Apostador> DataNascimentoComparator = (Apostador s1, Apostador s2) -> {
+       LocalDate data1 = s1.getDataNascimento();
+       LocalDate data2 = s2.getDataNascimento();
+       
+       //ascending order
+       return data1.compareTo(data2);
+       
+       //descending order
+       //return StudentName2.compareTo(StudentName1);
+    };
+    public static Comparator<Apostador> SaldoComparator = (Apostador s1, Apostador s2) -> {
+       Float data1 = s1.getSaldo();
+       Float data2 = s2.getSaldo();
+       
+       //ascending order
+       return data2.compareTo(data1);
+       
+       //descending order
+       //return StudentName2.compareTo(StudentName1);
+    };
+  public static Comparator<Apostador> PremiosUltimoSorteioComparator = (Apostador s1, Apostador s2) -> {
+       Float data1 = s1.getSaldo();
+       Float data2 = s2.getSaldo();
+       
+       //ascending order
+       return data2.compareTo(data1);
+       
+       //descending order
+       //return StudentName2.compareTo(StudentName1);
+    };
+
+
 
 }
