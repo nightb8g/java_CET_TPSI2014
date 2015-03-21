@@ -6,8 +6,8 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bitmilhoes.controller.ViewMovimentoController">
+<!--fx:controller="bitmilhoes.controller.ViewMovimentoController"-->
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" >
     <stylesheets>
         <URL value="@/bitmilhoes/style/viewmovimento.css" />
     </stylesheets>

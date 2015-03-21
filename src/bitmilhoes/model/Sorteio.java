@@ -63,25 +63,24 @@ public class Sorteio implements ISorteio {
     private Chave chaveVencedora;
 
     //este é o construts, logo inicializa obs atributos
-    public Sorteio() {//Preenchi este
+    public Sorteio() {
+        inicializaSorteio();
+    }
+    /**
+     * Inicializa as variáveis da classe 
+     */
+    private void inicializaSorteio() {
         lances = new ContainerList();//inicializa uma lista de lances
-        dataSorteio = java.time.LocalDateTime.now();//capta a data atual quando chama o construtor
+        dataSorteio = null;
         realizado = false;//o sorteio é criado, mas ainda não inicializado
-        //chaveVencedora = new Chave();//gera a chave aleatória, combinação para ganhar 1º prémio
         chaveVencedora = null;//A chave é gerada no sorteio
         nrRegistos = 0;
-    }
-
-    public void inicializaSorteio() {
-        //verifica se foi realizado o sorteio
-        iniciarCicloApostas();
     }
 
     @Override
     public boolean iniciarCicloApostas() {
         if (isRealizado()) {
-            //lances.getElements().clear();
-            lances = new ContainerList();
+            inicializaSorteio();
             return true;
         } else {
             return false;
@@ -102,6 +101,7 @@ public class Sorteio implements ISorteio {
         }
         realizado = true;
         chaveVencedora = new Chave(nums, ests);
+        dataSorteio= LocalDateTime.now();
         Iterator<Aposta> apostas = lances.getIterador();
         float total = PRECO_REGISTO_APOSTA * nrRegistos * PERCENTAGEM_PARA_PREMIOS;
 

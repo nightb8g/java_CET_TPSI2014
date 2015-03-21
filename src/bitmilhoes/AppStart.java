@@ -34,11 +34,10 @@ public class AppStart extends Application {
         ga.apostaAleatoria(212, (short) 1234);
        
         ga.efectuarSorteio();
-        
         System.out.println(ga.getApostadores());
-        System.out.println("nome "+ga.listarApostadoresNome());
-        System.out.println("data nascimento "+ ga.listarApostadoresDataNascimento());
-        System.out.println("saldo "+ga.listarApostadoresSaldo());
+ga.efectuarSorteio();
+        System.out.println(ga.getApostadores());
+
         Platform.exit();
     }
 
