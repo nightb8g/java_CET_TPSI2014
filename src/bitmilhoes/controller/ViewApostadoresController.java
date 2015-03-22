@@ -7,7 +7,10 @@ package bitmilhoes.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -15,6 +18,12 @@ import javafx.fxml.Initializable;
  * @author night8ug
  */
 public class ViewApostadoresController implements Initializable {
+    @FXML
+    private Button btnAdicionar;
+    @FXML
+    private Button btnEditar;
+    @FXML
+    private TableView<?> viewApostador;
 
     /**
      * Initializes the controller class.

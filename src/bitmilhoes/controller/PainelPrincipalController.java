@@ -10,17 +10,26 @@ import bitmilhoes.model.files.FicheiroEscritaBinario;
 import bitmilhoes.model.files.FicheiroLeituraBinario;
 import java.awt.Dialog;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -32,9 +41,7 @@ public class PainelPrincipalController implements Initializable {
     private GestorAposta gestorAposta;
     private Stage stage;
     @FXML
-    private MenuItem menuitemImportar;
-    @FXML
-    private MenuItem menuitemExportar;
+    private BorderPane bp;
     /**
      * Initializes the controller class.
      */
@@ -102,6 +109,19 @@ public class PainelPrincipalController implements Initializable {
         feb.fechar();
     }
 
-    
-    
+    @FXML
+    private void handleDadosApostadores(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewApostadores.fxml"));
+        loader.getController();
+        Stage stage2 = new Stage(StageStyle.DECORATED);
+        try {
+           stage2.setScene(new Scene((AnchorPane) loader.load()));
+        } catch (IOException ex) {
+            Logger.getLogger(PainelPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            stage2.initOwner(stage.getOwner());
+            stage2.initModality(Modality.WINDOW_MODAL);
+        stage2.show();
+    }
+
 }

@@ -13,20 +13,20 @@
         <URL value="@/bitmilhoes/style/painelprincipal.css" />
     </stylesheets>
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane fx:id="bp" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
                 <MenuBar BorderPane.alignment="CENTER">
                     <menus>
                         <Menu mnemonicParsing="false" text="Ficheiro">
                             <items>
-                                <MenuItem fx:id="menuitemImportar" mnemonicParsing="false" text="Importar" onAction="#handleImportar"  />
-                                <MenuItem fx:id="menuitemExportar" mnemonicParsing="false" text="Exportar" onAction="#handleExportar" />
+                                <MenuItem mnemonicParsing="false" text="Importar" onAction="#handleImportar"  />
+                                <MenuItem mnemonicParsing="false" text="Exportar" onAction="#handleExportar" />
                                 <MenuItem mnemonicParsing="false" text="Sair" onAction="#handleSairAction" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Apostadores">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Dados dos Apostadores" />
+                                <MenuItem mnemonicParsing="false" text="Dados dos Apostadores" onAction="#handleDadosApostadores"  />
                                 <MenuItem mnemonicParsing="false" text="Dapósitos e Levantamentos" />
                             </items>
                         </Menu>
@@ -45,6 +45,7 @@
                     </menus>
                 </MenuBar>
             </top>
+            <center></center>
         </BorderPane>
     </children>
 </AnchorPane>
