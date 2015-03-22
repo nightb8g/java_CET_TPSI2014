@@ -6,8 +6,8 @@
 package bitmilhoes.controller;
 
 import bitmilhoes.model.GestorAposta;
-import bitmilhoes.model.files.FicheiroEscritaBinario;
-import bitmilhoes.model.files.FicheiroLeituraBinario;
+import bitmilhoes.files.FicheiroEscritaBinario;
+import bitmilhoes.files.FicheiroLeituraBinario;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -110,7 +110,7 @@ public class PainelPrincipalController implements Initializable {
 
     @FXML
     private void handleDadosApostadores(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewApostadores.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/ViewApostadores.fxml"));
         loader.getController();
         Stage stage2 = new Stage(StageStyle.DECORATED);
         try {

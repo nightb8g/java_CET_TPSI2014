@@ -7,10 +7,10 @@ package bitmilhoes;
 
 import bitmilhoes.controller.PainelPrincipalController;
 import bitmilhoes.model.GestorAposta;
-import bitmilhoes.model.files.FicheiroEscritaBinario;
-import bitmilhoes.model.files.FicheiroEscritaTexto;
-import bitmilhoes.model.files.FicheiroLeituraBinario;
-import bitmilhoes.model.files.FicheiroLeituraTexto;
+import bitmilhoes.files.FicheiroEscritaBinario;
+import bitmilhoes.files.FicheiroEscritaTexto;
+import bitmilhoes.files.FicheiroLeituraBinario;
+import bitmilhoes.files.FicheiroLeituraTexto;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
