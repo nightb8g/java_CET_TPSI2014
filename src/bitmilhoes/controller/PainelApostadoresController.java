@@ -5,15 +5,12 @@
  */
 package bitmilhoes.controller;
 
-import bitmilhoes.model.Apostador;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -32,20 +29,6 @@ public class PainelApostadoresController implements Initializable {
     @FXML
     private Button btnNovo;
     
-    @FXML
-    private TableView<Apostador> tvApostadores;
-    
-    @FXML
-    private TableColumn<Apostador, Integer> telefone;
-    
-    @FXML
-    private TableColumn<Apostador, String> nome;
-    
-    @FXML
-    private TableColumn<Apostador, LocalDate> dtNasc;
-    
-    @FXML
-    private TableColumn<Apostador, Float> saldo;
     
     
     /**
@@ -54,7 +37,15 @@ public class PainelApostadoresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        btnAlterar.setDisable(true);
+        btnEliminar.setDisable(true);
+        
     }    
+
+    @FXML
+    private void handlesNovoApostador(ActionEvent event) {
+        
+    }
     
     
     
