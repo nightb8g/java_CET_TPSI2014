@@ -98,6 +98,7 @@ public class AppStart extends Application {
         PainelPrincipalController controller = loader.<PainelPrincipalController>getController();
         controller.initdata(gestoraposta,stage);
         stage.show();
+        //teste
         return stage;
     }
 
