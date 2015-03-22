@@ -35,7 +35,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class PainelPrincipalController implements Initializable {
 
-    private GestorAposta gestorAposta;//retira um gestoraposta
+    private GestorAposta gestorAposta;//gestoraposta
 
     private Stage primaryStarge; //Stage
 
@@ -49,13 +49,15 @@ public class PainelPrincipalController implements Initializable {
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelMovimentos.fxml"));
         try {
             borderPane.setCenter(loader.load());
+           
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
+         PainelMovimentosController controller = loader.<PainelMovimentosController>getController();
+        controller.initdata(getGestorAposta(),primaryStarge);
     }
 
     //apostaAleatoria
-
     @FXML
     private void handleApostaAleatoria(ActionEvent event) {
     }

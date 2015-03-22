@@ -36,6 +36,7 @@ public class AppStart extends Application {
     @Override
     public void start(Stage primaryStage) {
         GestorAposta gestoraposta = new GestorAposta();
+        gestoraposta.novoApostador(212, (short)1234,"op", LocalDate.now(), 20);
         //testesConsola(gestoraposta);
         testesFX(gestoraposta);
       
@@ -88,7 +89,6 @@ public class AppStart extends Application {
     }
 
     private Stage testesFX(GestorAposta gestoraposta) {
-     
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PainelPrincipal.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
         try {

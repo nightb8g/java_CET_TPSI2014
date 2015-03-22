@@ -38,7 +38,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <TextField fx:id="textPin" prefHeight="25.0" prefWidth="89.0" />
+                              <TextField promptText="0000"  fx:id="textPin" prefHeight="25.0" prefWidth="89.0" />
                            </children>
                         </HBox>
                         <Label alignment="CENTER_RIGHT" text="Nome" />
@@ -55,8 +55,7 @@
                <children>
                   <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                      <Button fx:id="btnNovo" mnemonicParsing="false" onAction="#handleNovoMovimento" text="Novo" />
-                        <Button fx:id="btnAlterar" mnemonicParsing="false" onAction="#handleAlterarMovimento" text="Alterar" />
+                      <Button fx:id="btnNovo"  mnemonicParsing="false" onAction="#handleNovoMovimento" text="Novo" />
                         <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleEliminarMovimento" text="Eliminar" />
                         <Button fx:id="btnConfirmar" mnemonicParsing="false" onAction="#handleConfirmarMovimento" text="Confirmar" />
                         <Button fx:id="btnReiniciar" mnemonicParsing="false" onAction="#handleReiniciarMovimento" text="Reiniciar" />
