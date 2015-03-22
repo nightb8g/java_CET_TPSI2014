@@ -19,8 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -42,30 +40,24 @@ public class PainelPrincipalController implements Initializable {
 
     private BorderPane borderPane;//BorderPane
 
-    //sair
-    @FXML
-    public void handleSair(ActionEvent event) {
-        Platform.exit();
-    }
-
     //depositoLevantamento
     @FXML
-    public void handleDepositoLevantamento(ActionEvent event) {
+    private void handleDepositoLevantamento(ActionEvent event) {
     }
 
     //apostaAleatoria
     @FXML
-    public void handleApostaAleatoria(ActionEvent event) {
+    private void handleApostaAleatoria(ActionEvent event) {
     }
 
     //apostaPersonalizada
     @FXML
-    public void handleApostaPersonalizada(ActionEvent event) {
+    private void handleApostaPersonalizada(ActionEvent event) {
     }
 
     //iniciaCicloApostas
     @FXML
-    public void handleIniciaCicloApostas(ActionEvent event) {
+    private void handleIniciaCicloApostas(ActionEvent event) {
     }
 
     //sorteaChaveAposta
@@ -73,8 +65,6 @@ public class PainelPrincipalController implements Initializable {
     public void handleSorteaChaveVencedora(ActionEvent event) {
     }
 
-//    @FXML
-//    private 
     /**
      * Initializes the controller class.
      */
@@ -82,41 +72,33 @@ public class PainelPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStarge = primaryStage;
     }
-
     public BorderPane getBorderPane() {
         return borderPane;
     }
-
     public Stage getPrimaryStage() {
         return primaryStarge;
     }
-
     public GestorAposta getGestorAposta() {
         return gestorAposta;
     }
-
     public void setGestorAposta(GestorAposta gestorAposta) {
         this.gestorAposta = gestorAposta;
     }
-
     public void initdata(GestorAposta gestorAposta, Stage stage) {
         this.gestorAposta = gestorAposta;
         this.primaryStarge = stage;
     }
-
-    private void handleSairAction(ActionEvent event) {
+    @FXML
+    private void handleSair(ActionEvent event) {
         Platform.exit();
     }
-
     @FXML
     private void handleImportar(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("BIN", "*.bin"));
         File file = fileChooser.showOpenDialog(primaryStarge);
         //ler objecto
@@ -133,13 +115,7 @@ public class PainelPrincipalController implements Initializable {
             gestorAposta = linha;
         } while (true);
         flb.fechar();
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText(gestorAposta.toString());
-        alert.showAndWait();
     }
-
     @FXML
     private void handleExportar(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -155,7 +131,6 @@ public class PainelPrincipalController implements Initializable {
         feb.escrever(gestorAposta);
         feb.fechar();
     }
-
     @FXML
     private void handleDadosApostadores(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PainelPrincipal.fxml"));
