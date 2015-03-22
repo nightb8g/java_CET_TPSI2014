@@ -7,45 +7,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!--fx:controller="bitmilhoes.controller.PainelPrincipalController"-->
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bitmilhoes.controller.PainelPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bitmilhoes.controller.PainelPrincipalController">
     <stylesheets>
         <URL value="@/bitmilhoes/style/painelprincipal.css" />
     </stylesheets>
-    <children>
-        <BorderPane fx:id="bp" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <top>
-                <MenuBar BorderPane.alignment="CENTER">
-                    <menus>
-                        <Menu mnemonicParsing="false" text="Ficheiro">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Importar" onAction="#handleImportar"  />
-                                <MenuItem mnemonicParsing="false" text="Exportar" onAction="#handleExportar" />
-                                <MenuItem mnemonicParsing="false" text="Sair" onAction="#handleSairAction" />
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Apostadores">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Dados dos Apostadores" onAction="#handleDadosApostadores"  />
-                                <MenuItem mnemonicParsing="false" text="Dapósitos e Levantamentos" />
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Registo Apostas">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Aposta Aleatória" />
-                                <MenuItem mnemonicParsing="false" text="Aposta Personalizada" />
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Sorteio">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Iniciar Ciclo de Apostas" />
-                                <MenuItem mnemonicParsing="false" text="Sortear Chave Vencedora" />
-                            </items>
-                        </Menu>
-                    </menus>
-                </MenuBar>
-            </top>
-            <center></center>
-        </BorderPane>
-    </children>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Ficheiro">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleImportar" text="Importar" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSair" text="Sair" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Apostadores">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleDadosApostadores" text="Dados dos Apostadores" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleDepositoLevantamento" text="Depósitos e Levantamentos" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Registo Apostas">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleApostaAleatoria" text="Aposta Aleatória" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleApostaPersonalizada" text="Aposta Personalizada" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Sorteio">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleIniciaCicloApostas" text="Iniciar Ciclo de Apostas" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSorteaChaveVencedora" text="Sortear Chave Vencedora" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
 </AnchorPane>
