@@ -5,6 +5,7 @@
  */
 package bitmilhoes.controller;
 
+import bitmilhoes.AppStart;
 import bitmilhoes.files.FicheiroEscritaBinario;
 import bitmilhoes.files.FicheiroLeituraBinario;
 import bitmilhoes.model.GestorAposta;
@@ -19,13 +20,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -39,10 +40,15 @@ public class PainelPrincipalController implements Initializable {
     private Stage primaryStarge; //Stage
 
     private BorderPane borderPane;//BorderPane
+    @FXML
+    private AnchorPane anchorpane;
 
     //depositoLevantamento
     @FXML
     private void handleDepositoLevantamento(ActionEvent event) {
+
+        System.out.println(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
+        
     }
 
     //apostaAleatoria
@@ -71,6 +77,8 @@ public class PainelPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if(anchorpane.getChildren().get(0)instanceof BorderPane)
+         borderPane=(BorderPane)anchorpane.getChildren().get(0);
     }
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStarge = primaryStage;
@@ -133,17 +141,14 @@ public class PainelPrincipalController implements Initializable {
     }
     @FXML
     private void handleDadosApostadores(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PainelPrincipal.fxml"));
-        loader.getController();
-        Stage stage2 = new Stage(StageStyle.DECORATED);
+     FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
+     getBorderPane();
         try {
-            stage2.setScene(new Scene((AnchorPane) loader.load()));
-        } catch (IOException ex) {
-            Logger.getLogger(PainelPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            borderPane.setCenter(loader.load());
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
-        stage2.initOwner(primaryStarge.getOwner());
-        stage2.initModality(Modality.WINDOW_MODAL);
-        stage2.show();
+     
     }
 
 }

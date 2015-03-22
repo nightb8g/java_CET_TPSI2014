@@ -88,6 +88,7 @@ public class AppStart extends Application {
     }
 
     private Stage testesFX(GestorAposta gestoraposta) {
+     
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PainelPrincipal.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
         try {
