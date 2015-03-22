@@ -46,12 +46,16 @@ public class PainelPrincipalController implements Initializable {
     //depositoLevantamento
     @FXML
     private void handleDepositoLevantamento(ActionEvent event) {
-
-        System.out.println(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelMovimentos.fxml"));
+        try {
+            borderPane.setCenter(loader.load());
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     //apostaAleatoria
+
     @FXML
     private void handleApostaAleatoria(ActionEvent event) {
     }
@@ -77,32 +81,41 @@ public class PainelPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        if(anchorpane.getChildren().get(0)instanceof BorderPane)
-         borderPane=(BorderPane)anchorpane.getChildren().get(0);
+        if (anchorpane.getChildren().get(0) instanceof BorderPane) {
+            borderPane = (BorderPane) anchorpane.getChildren().get(0);
+        }
     }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStarge = primaryStage;
     }
+
     public BorderPane getBorderPane() {
         return borderPane;
     }
+
     public Stage getPrimaryStage() {
         return primaryStarge;
     }
+
     public GestorAposta getGestorAposta() {
         return gestorAposta;
     }
+
     public void setGestorAposta(GestorAposta gestorAposta) {
         this.gestorAposta = gestorAposta;
     }
+
     public void initdata(GestorAposta gestorAposta, Stage stage) {
         this.gestorAposta = gestorAposta;
         this.primaryStarge = stage;
     }
+
     @FXML
     private void handleSair(ActionEvent event) {
         Platform.exit();
     }
+
     @FXML
     private void handleImportar(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -124,6 +137,7 @@ public class PainelPrincipalController implements Initializable {
         } while (true);
         flb.fechar();
     }
+
     @FXML
     private void handleExportar(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -139,16 +153,15 @@ public class PainelPrincipalController implements Initializable {
         feb.escrever(gestorAposta);
         feb.fechar();
     }
+
     @FXML
     private void handleDadosApostadores(ActionEvent event) {
-     FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
-     getBorderPane();
+        FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
         try {
             borderPane.setCenter(loader.load());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-     
     }
 
 }
