@@ -11,8 +11,10 @@ import bitmilhoes.files.FicheiroEscritaBinario;
 import bitmilhoes.files.FicheiroEscritaTexto;
 import bitmilhoes.files.FicheiroLeituraBinario;
 import bitmilhoes.files.FicheiroLeituraTexto;
+import bitmilhoes.model.Apostador;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.logging.Level;
@@ -22,8 +24,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -45,45 +45,23 @@ public class AppStart extends Application {
         
         ga.novoApostador(212, (short) 1234, "OP", LocalDate.of(1980, Month.OCTOBER, 31), 30);
         ga.apostaAleatoria(212, (short) 1234);
-
-        //escrever fcheiro
-        FicheiroEscritaTexto fet = new FicheiroEscritaTexto(new File("Pessoas.txt"));
-
-        fet.abrir();
-        fet.escrever(ga.toString());
-        fet.fechar();
-
-        //ler ficheiro
-        FicheiroLeituraTexto flt = new FicheiroLeituraTexto(new File("Pessoas.txt"));
-
-        flt.abrir();
-        do {
-            String linha = flt.ler();
-            if (linha == null) {
-                break;
-            }
-            System.out.println(linha);
-        } while (true);
-        flt.fechar();
-
-        //escrever objecto
-        FicheiroEscritaBinario feb = new FicheiroEscritaBinario(new File("Pessoas.bin"));
-        // System.out.println(ga);
-        feb.abrir();
-        feb.escrever(ga.getApostadores());
-        feb.fechar();
-
-        //ler objecto
-        FicheiroLeituraBinario<GestorAposta> flb = new FicheiroLeituraBinario(new File("Pessoas.bin"));
-        flb.abrir();
-        do {
-            GestorAposta linha = flb.ler();
-            if (linha == null) {
-                break;
-            }
-            System.out.println(linha);
-        } while (true);
-        flb.fechar();
+        ga.apostaAleatoria(212, (short) 1234);
+        ga.apostaAleatoria(212, (short) 1234);
+        ga.novoApostador(1234, (short) 1234, "AP", LocalDate.of(1990, Month.OCTOBER, 31), 10);
+        ga.apostaAleatoria(1234, (short) 1234);
+        ga.apostaAleatoria(1234, (short) 1234);
+        ga.apostaAleatoria(1234, (short) 1234);
+        ga.apostaAleatoria(1234, (short) 1234);
+        ga.apostaAleatoria(1234, (short) 1234);
+        
+        ga.efectuarSorteio();
+        System.out.println(ga);
+       ga.efectuarSorteio();
+       
+        System.out.println(ga);
+        System.out.println(ga.iniciarCicloApostas());
+       
+     
         Platform.exit();
     }
 

@@ -6,10 +6,11 @@
 package bitmilhoes.files;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,11 +30,11 @@ public class FicheiroEscritaBinario extends Ficheiro {
         try {
             this.streamOut = new FileOutputStream(filename);
             this.objectOut = new ObjectOutputStream(streamOut);
-        } catch (FileNotFoundException ex) {
-            System.err.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+        }catch (Exception ex) {
+            Logger.getLogger(FicheiroEscritaBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        
     }
 
     @Override
@@ -42,15 +43,16 @@ public class FicheiroEscritaBinario extends Ficheiro {
             this.objectOut.close();
             this.streamOut.close();
         } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+            Logger.getLogger(FicheiroEscritaBinario.class.getName()).log(Level.SEVERE, null, ex);
+        
         }
     }
 
     public void escrever(Object obj) {
         try {
             objectOut.writeObject(obj);
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+        }catch (IOException ex) {
+            Logger.getLogger(FicheiroEscritaBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

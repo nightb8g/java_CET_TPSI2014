@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,10 +31,9 @@ public class FicheiroLeituraBinario<T> extends Ficheiro {
         try {
             this.streamIn = new FileInputStream(filename);
             this.objectIn = new ObjectInputStream(streamIn);
-        } catch (FileNotFoundException ex) {
-            System.err.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+        }
+             catch (Exception ex) {
+            Logger.getLogger(FicheiroLeituraBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -42,8 +43,8 @@ public class FicheiroLeituraBinario<T> extends Ficheiro {
         try {
             this.objectIn.close();
             this.streamIn.close();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(FicheiroEscritaBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -53,7 +54,7 @@ public class FicheiroLeituraBinario<T> extends Ficheiro {
         try {
             obj = this.objectIn.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            
+            Logger.getLogger(FicheiroEscritaBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (T)obj;
     }
