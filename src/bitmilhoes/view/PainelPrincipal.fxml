@@ -19,7 +19,7 @@
                 <Menu mnemonicParsing="false" text="Ficheiro">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#handleImportar" text="Importar" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleGuardar" text="Guardar" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExportar" text="Guardar" />
                         <MenuItem mnemonicParsing="false" onAction="#handleSair" text="Sair" />
                   </items>
                 </Menu>
