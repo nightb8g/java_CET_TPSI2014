@@ -5,30 +5,19 @@
  */
 package bitmilhoes.controller;
 
+import bitmilhoes.AppStart;
 import bitmilhoes.model.GestorAposta;
-import bitmilhoes.files.FicheiroEscritaBinario;
-import bitmilhoes.files.FicheiroLeituraBinario;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.MenuItem;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -36,91 +25,116 @@ import javafx.stage.StageStyle;
  * @author night8ug
  */
 public class PainelPrincipalController implements Initializable {
-
-    private GestorAposta gestorAposta;
-    private Stage stage;
+    
+    private GestorAposta gestorAposta;//retira um gestoraposta
+    
     @FXML
-    private BorderPane bp;
+    
+    private Stage primaryStarge; //Stage
+    
+    @FXML
+    private BorderPane borderPane;//BorderPane
+    
+    //importar
+    public void handleImportar(ActionEvent event){
+    }
+    
+    //guardar
+    public void handleGuardar(ActionEvent event){
+    }
+    
+    //sair
+    public void handleSair(ActionEvent event){
+        Platform.exit();
+    }
+    
+    //dadosApostadores
+    public void handleDadosApostadores(ActionEvent event){
+        //try catch -> verificar erros
+        try{
+            //criar um node com correspondente painel
+            Node node = getPainelApostadores();
+            //colocar para a posição do borderpane
+        }catch(Exception e){ System.out.println(e.getMessage());}
+    }
+    
+    //depositoLevantamento
+    public void handleDepositoLevantamento(ActionEvent event){
+    }
+    
+    //apostaAleatoria
+    public void handleApostaAleatoria(ActionEvent event){
+    }
+    
+    //apostaPersonalizada
+    public void handleApostaPersonalizada(ActionEvent event){
+    }
+    
+    //iniciaCicloApostas
+    public void handleIniciaCicloApostas(ActionEvent event){
+    }
+    
+    //sorteaChaveAposta
+    public void handleSorteaChaveVencedora(ActionEvent event){
+    }
+    
+//    @FXML
+//    private 
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }    
+    
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStarge = primaryStage;
     }
-    public void initdata(GestorAposta gestorAposta, Stage stage)
-    {
-      this.gestorAposta=gestorAposta;
-      this.stage=stage;
+    
+    public BorderPane getBorderPane(){
+        return borderPane;
     }
-    public void setGestorAposta(GestorAposta gestorAposta) {
-        this.gestorAposta = gestorAposta;
+    
+    public Stage getPrimaryStage(){
+        return primaryStarge;
     }
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    
+    public GestorAposta getGestorAposta(){
+        return gestorAposta;
     }
-    @FXML
-    private void handleSairAction(ActionEvent event) {
-        Platform.exit();
+    
+    private Node getPainelApostadores(){
+        FXMLLoader loader = new FXMLLoader(AppStart.class.getResource("view/PainelApostadores.fxml"));
+        loader.setController(new PainelApostadoresController(this));//ainda por implementar
+        AnchorPane anchorPane = null;
+        anchorPane = (AnchorPane) loader.load();
+        return anchorPane;
     }
-
-    @FXML
-    private void handleImportar(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        
-         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("BIN", "*.bin"));
-        File file = fileChooser.showOpenDialog(stage);
-        //ler objecto
-        if (file == null) {
-            return;
-        }
-        FicheiroLeituraBinario<GestorAposta> flb = new FicheiroLeituraBinario(file);
-        flb.abrir();
-        do {
-            GestorAposta linha = flb.ler();
-            if (linha == null) {
-                break;
-            }
-            gestorAposta = linha;
-        } while (true);
-        flb.fechar();
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText(gestorAposta.toString());
-        alert.showAndWait();
-    }
-
-    @FXML
-    private void handleExportar(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Resource File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("BIN", "*.bin"));
-        File file = fileChooser.showSaveDialog(stage);
-        //escrever objecto
-        FicheiroEscritaBinario feb = new FicheiroEscritaBinario(file);
-        if (file == null) {
-            return;
-        }
-        feb.abrir();
-        feb.escrever(gestorAposta);
-        feb.fechar();
-    }
-
-    @FXML
-    private void handleDadosApostadores(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/ViewApostadores.fxml"));
-        loader.getController();
-        Stage stage2 = new Stage(StageStyle.DECORATED);
-        try {
-           stage2.setScene(new Scene((AnchorPane) loader.load()));
-        } catch (IOException ex) {
-            Logger.getLogger(PainelPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            stage2.initOwner(stage.getOwner());
-            stage2.initModality(Modality.WINDOW_MODAL);
-        stage2.show();
-    }
-
+    
+//    private Node getPainelMovimentos(){
+//    FXMLLoader loader = new FXMLLoader(AppStart.class.getResource("view/PainelMovimentos.fxml"));
+//        loader.setController(new PainelApostadoresController(this));
+//        AnchorPane anchorPane = null;
+//        anchorPane = (AnchorPane) loader.load();
+//        return anchorPane;
+//    }
+    
+//    private Node getPainelAlterarPin(){
+//        FXMLLoader loader = new FXMLLoader(AppStart.class.getResource("view/PainelAlterarPin.fxml"));
+//        loader.setController(new PainelApostadoresController(this));
+//        AnchorPane anchorPane = null;
+//        anchorPane = (AnchorPane) loader.load();
+//        return anchorPane;
+//    }
+    
+//    private Node getPainelApostas(){
+//        FXMLLoader loader = new FXMLLoader(AppStart.class.getResource("view/PainelApostas.fxml"));
+//        loader.setController(new PainelApostadoresController(this));
+//        AnchorPane anchorPane = null;
+//        anchorPane = (AnchorPane) loader.load();
+//        return anchorPane;
+//    }
+    
 }
