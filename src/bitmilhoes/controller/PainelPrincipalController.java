@@ -8,7 +8,6 @@ package bitmilhoes.controller;
 import bitmilhoes.model.GestorAposta;
 import bitmilhoes.model.files.FicheiroEscritaBinario;
 import bitmilhoes.model.files.FicheiroLeituraBinario;
-import java.awt.Dialog;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
