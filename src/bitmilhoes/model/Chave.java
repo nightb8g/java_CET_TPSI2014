@@ -2,6 +2,7 @@ package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
+import java.io.Serializable;
 import java.util.Random;
 
 
@@ -12,7 +13,7 @@ import java.util.Random;
  * @version 1.0
  * @created 11-Nov-2010 01:11:27
  */
-public class Chave {
+public class Chave implements Serializable{
     private IContainerOperations numeros;
     private IContainerOperations estrelas;
 

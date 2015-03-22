@@ -2,6 +2,7 @@ package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerSet;
 import bitmilhoes.containers.IContainerOperations;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @version 4.0
  * @updated 18-Jan-2015T17:13:36
  */
-public class GestorAposta implements IGestorAposta {
+public class GestorAposta implements IGestorAposta,Serializable {
 
     private Sorteio sorteio;
     private IContainerOperations<Apostador> apostadores;
@@ -94,7 +95,7 @@ public class GestorAposta implements IGestorAposta {
     @Override
     public void apostaAleatoria(int telefone, short pin) {
         sorteio.registaAposta(getApostador(telefone, pin).criarAposta(new Chave()));
-        
+
     }
 
     @Override
@@ -104,28 +105,28 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public List<Apostador> listarApostadoresNome() {
-        List<Apostador> aux= apostadores.getElements();
-       aux.sort(Apostador.NomeComparator);
-      return aux;
+        List<Apostador> aux = apostadores.getElements();
+        aux.sort(Apostador.NomeComparator);
+        return aux;
     }
 
     @Override
     public List<Apostador> listarApostadoresDataNascimento() {
-          List<Apostador> aux= apostadores.getElements();
-       aux.sort(Apostador.DataNascimentoComparator);
-      return aux;
+        List<Apostador> aux = apostadores.getElements();
+        aux.sort(Apostador.DataNascimentoComparator);
+        return aux;
     }
 
     @Override
     public List<Apostador> listarApostadoresSaldo() {
-        List<Apostador> aux= apostadores.getElements();
-       aux.sort(Apostador.SaldoComparator);
-      return aux;
+        List<Apostador> aux = apostadores.getElements();
+        aux.sort(Apostador.SaldoComparator);
+        return aux;
     }
 
     @Override
     public List<Aposta> listarPremiosUltimoSorteio() {
-  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -140,8 +141,8 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public Chave efectuarSorteio() {
-        Chave chave=new Chave();
-            return sorteio.efectuarSorteio(chave.getNumeros(),chave.getEstrelas());
+        Chave chave = new Chave();
+        return sorteio.efectuarSorteio(chave.getNumeros(), chave.getEstrelas());
     }
 
     @Override
@@ -171,7 +172,9 @@ public class GestorAposta implements IGestorAposta {
 
     @Override
     public String toString() {
-        return "GestorAposta{" + "sorteio=" + sorteio + ", apostadores=" + apostadores + '}';
+        return "GestorAposta{" + "sorteio=" + sorteio + ", apostadores=" + apostadores.getElements() + "}";
     }
+
+    
 
 }

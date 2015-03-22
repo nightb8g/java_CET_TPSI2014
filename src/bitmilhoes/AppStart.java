@@ -5,13 +5,14 @@
  */
 package bitmilhoes;
 
-import bitmilhoes.containers.ContainerSet;
-import bitmilhoes.containers.IContainerOperations;
-import bitmilhoes.model.Apostador;
-import bitmilhoes.model.Chave;
 import bitmilhoes.model.GestorAposta;
+import bitmilhoes.model.files.FicheiroEscritaBinario;
+import bitmilhoes.model.files.FicheiroEscritaTexto;
+import bitmilhoes.model.files.FicheiroLeituraBinario;
+import bitmilhoes.model.files.FicheiroLeituraTexto;
+import ficheiros.Pessoa;
+import java.io.File;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -28,16 +29,51 @@ public class AppStart extends Application {
     public void start(Stage primaryStage) {
         GestorAposta ga = new GestorAposta();
         ga.novoApostador(212, (short) 1234, "OP", LocalDate.of(1980, Month.OCTOBER, 31), 30);
-         ga.novoApostador(123, (short) 1234, "AP",LocalDate.of(1990, Month.MARCH, 3), 30);
         ga.apostaAleatoria(212, (short) 1234);
-        ga.apostaAleatoria(212, (short) 1234);
-        ga.apostaAleatoria(212, (short) 1234);
-       
-        ga.efectuarSorteio();
-        System.out.println(ga.getApostadores());
-ga.efectuarSorteio();
-        System.out.println(ga.getApostadores());
+        
+        
+        //escrever fcheiro
+        FicheiroEscritaTexto fet = new FicheiroEscritaTexto(new File("Pessoas.txt"));
 
+        fet.abrir();
+        fet.escrever(ga.toString());
+        fet.fechar();
+
+        //ler ficheiro
+        FicheiroLeituraTexto flt = new FicheiroLeituraTexto(new File("Pessoas.txt"));
+        
+        flt.abrir();
+        do {
+            String linha = flt.ler();
+            if (linha == null) {
+                break;
+            }
+            System.out.println(linha);
+        } while (true);
+        flt.fechar();
+        
+        
+        //escrever objecto
+        FicheiroEscritaBinario feb = new FicheiroEscritaBinario(new File("Pessoas.bin"));
+       // System.out.println(ga);
+        feb.abrir();
+        feb.escrever(ga.getApostadores());
+        feb.fechar();
+
+        //ler objecto
+        FicheiroLeituraBinario<GestorAposta> flb = new FicheiroLeituraBinario(new File("Pessoas.bin"));
+        flb.abrir();
+        do {
+            GestorAposta linha = flb.ler();
+            if (linha == null) {
+                break;
+            }
+           System.out.println(linha);
+        } while (true);
+        flb.fechar();
+        
+       
+        
         Platform.exit();
     }
 

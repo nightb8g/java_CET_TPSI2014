@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  * @created 11-Nov-2010 01:11:27
  */
-public class Movimento implements IMovimento {
+public class Movimento implements IMovimento,Serializable {
 
    
     private LocalDateTime dataMovimento;

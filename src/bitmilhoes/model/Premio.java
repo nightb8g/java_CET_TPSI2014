@@ -1,11 +1,13 @@
 package bitmilhoes.model;
 
+import java.io.Serializable;
+
 /**
  * @author ipoo
  * @version 1.0
  * @created 11-Nov-2010 01:11:27
  */
-public class Premio {
+public class Premio implements Serializable{
 
     private int ordinal; // 1º Premio, 2º Premio, 3º Premio, ...,etc
     private int numero; // Numero de numeros certos

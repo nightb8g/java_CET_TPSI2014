@@ -12,39 +12,39 @@
     <stylesheets>
         <URL value="@/bitmilhoes/style/painelprincipal.css" />
     </stylesheets>
-   <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <MenuBar BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false" text="Ficheiro">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Importar" />
-                        <MenuItem mnemonicParsing="false" text="Guardar" />
-                        <MenuItem mnemonicParsing="false" text="Sair" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Apostadores">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Dados dos Apostadores" />
-                        <MenuItem mnemonicParsing="false" text="Dapósitos e Levantamentos" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Registo Apostas">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Aposta Aleatória" />
-                        <MenuItem mnemonicParsing="false" text="Aposta Personalizada" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Sorteio">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Iniciar Ciclo de Apostas" />
-                        <MenuItem mnemonicParsing="false" text="Sortear Chave Vencedora" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
-         </top>
-      </BorderPane>
-   </children>
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Ficheiro">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Importar" />
+                                <MenuItem mnemonicParsing="false" text="Guardar" />
+                                <MenuItem mnemonicParsing="false" text="Sair" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Apostadores">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Dados dos Apostadores" />
+                                <MenuItem mnemonicParsing="false" text="Dapósitos e Levantamentos" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Registo Apostas">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Aposta Aleatória" />
+                                <MenuItem mnemonicParsing="false" text="Aposta Personalizada" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Sorteio">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Iniciar Ciclo de Apostas" />
+                                <MenuItem mnemonicParsing="false" text="Sortear Chave Vencedora" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+        </BorderPane>
+    </children>
 </AnchorPane>

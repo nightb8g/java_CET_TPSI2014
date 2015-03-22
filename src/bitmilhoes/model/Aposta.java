@@ -1,5 +1,6 @@
 package bitmilhoes.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  * @updated 17-Nov-2010 14:07:26
  */
-public class Aposta implements IAposta {
+public class Aposta implements IAposta,Serializable {
 
     /**
      * A data de registo devera ser adicionada automaticamente com a data/hora

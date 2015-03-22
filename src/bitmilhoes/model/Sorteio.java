@@ -2,6 +2,7 @@ package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * @version 1.0
  * @created 11-Nov-2010 01:11:27
  */
-public class Sorteio implements ISorteio {
+public class Sorteio implements ISorteio,Serializable {
 
     /**
      * Pre�o de uma aposta.
@@ -104,7 +105,6 @@ public class Sorteio implements ISorteio {
         dataSorteio= LocalDateTime.now();
         Iterator<Aposta> apostas = lances.getIterador();
         float total = PRECO_REGISTO_APOSTA * nrRegistos * PERCENTAGEM_PARA_PREMIOS;
-
         int[] ordinal = new int[PREMIOS.length + 1];
         while (apostas.hasNext()) {
             int numscount = 0, estrelascount = 0;
@@ -144,7 +144,6 @@ public class Sorteio implements ISorteio {
         }
         primeiroPremio = PREMIOS[0];
         return new Chave(nums, ests);
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -205,6 +204,6 @@ public class Sorteio implements ISorteio {
 //    }      
     @Override
     public String toString() {
-        return "Sorteio{" + "dataSorteio=" + dataSorteio + ", nrRegistos=" + nrRegistos + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances + ", chaveVencedora=" + chaveVencedora + '}';
+        return "Sorteio{" + "dataSorteio=" + dataSorteio + ", nrRegistos=" + nrRegistos + ", realizado=" + realizado + ", primeiroPremio=" + primeiroPremio + ", lances=" + lances.getElements() + ", chaveVencedora=" + chaveVencedora + '}';
     }
 }

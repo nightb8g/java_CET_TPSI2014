@@ -2,6 +2,7 @@ package bitmilhoes.model;
 
 import bitmilhoes.containers.ContainerList;
 import bitmilhoes.containers.IContainerOperations;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -15,7 +16,7 @@ import java.util.List;
  * @version 1.0
  * @updated 17-Nov-2010 12:54:02
  */
-public class Apostador implements IApostador {
+public class Apostador implements IApostador,Serializable {
 
     /**
      * O numero de telefone identifica univocamente um apostador. Não pode haver
