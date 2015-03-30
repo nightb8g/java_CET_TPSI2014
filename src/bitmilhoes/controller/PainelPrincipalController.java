@@ -70,7 +70,11 @@ public class PainelPrincipalController implements Initializable {
     @FXML
     public void handleSorteaChaveVencedora(ActionEvent event) {
     }
-
+    
+public void initdata(GestorAposta gestorAposta, Stage stage) {
+        this.gestorAposta = gestorAposta;
+        this.primaryStarge = stage;
+    }
     /**
      * Initializes the controller class.
      */
@@ -102,10 +106,7 @@ public class PainelPrincipalController implements Initializable {
         this.gestorAposta = gestorAposta;
     }
 
-    public void initdata(GestorAposta gestorAposta, Stage stage) {
-        this.gestorAposta = gestorAposta;
-        this.primaryStarge = stage;
-    }
+    
 
     @FXML
     private void handleSair(ActionEvent event) {
@@ -154,7 +155,10 @@ public class PainelPrincipalController implements Initializable {
     private void handleDadosApostadores(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("bitmilhoes/view/PainelApostadores.fxml"));
         try {
+            
             borderPane.setCenter(loader.load());
+            PainelApostadoresController controller = loader.<PainelApostadoresController>getController();
+            controller.initdata(gestorAposta);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

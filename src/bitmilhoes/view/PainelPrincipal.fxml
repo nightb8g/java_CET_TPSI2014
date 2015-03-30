@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  fx:id="anchorpane" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bitmilhoes.controller.PainelPrincipalController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bitmilhoes.controller.PainelPrincipalController">
     <stylesheets>
         <URL value="@/bitmilhoes/style/painelprincipal.css" />
     </stylesheets>
@@ -18,9 +19,18 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Ficheiro">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#handleImportar" text="Importar" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleExportar" text="Guardar" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleSair" text="Sair" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleImportar" text="Importar">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExportar" text="Exportar">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#handleSair" text="Sair">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Apostadores">
@@ -37,7 +47,7 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Sorteio">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#handleIniciaCicloApostas" text="Iniciar Ciclo de Apostas" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleIniciaCicloApostas" text="Novo Ciclo de Apostas" />
                         <MenuItem mnemonicParsing="false" onAction="#handleSorteaChaveVencedora" text="Sortear Chave Vencedora" />
                     </items>
                   </Menu>

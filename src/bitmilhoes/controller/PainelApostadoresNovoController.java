@@ -7,7 +7,11 @@ package bitmilhoes.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,6 +19,20 @@ import javafx.fxml.Initializable;
  * @author night8ug
  */
 public class PainelApostadoresNovoController implements Initializable {
+    @FXML
+    private TextField textNome;
+    @FXML
+    private TextField textTelefone;
+    @FXML
+    private TextField textDataNascDia;
+    @FXML
+    private TextField textDataNascMes;
+    @FXML
+    private TextField textDataNascAno;
+    @FXML
+    private Button btnOk;
+    @FXML
+    private Button btnCancel;
 
     /**
      * Initializes the controller class.
@@ -23,5 +41,13 @@ public class PainelApostadoresNovoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleOk(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleCancel(ActionEvent event) {
+    }
     
 }
